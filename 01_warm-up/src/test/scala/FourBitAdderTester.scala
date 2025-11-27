@@ -36,6 +36,30 @@ class FourBitAdderTester extends AnyFlatSpec with ChiselScalatestTester {
       /*
        * TODO: Insert your test cases
        */  
+
+      // Test all possible 4-bit combinations
+        // 4-bit unsigned range: 0 to 15 (0x0 to 0xF)
+        for(a <- 0 to 15) {
+          for(b <- 0 to 15) {
+            
+            val result = a + b
+            
+            // Check if overflow occurs (result > 15)
+            if(result <= 15) {
+              // No overflow case
+              dut.io.a.poke(a.U)
+              dut.io.b.poke(b.U)
+              dut.io.s.expect(result.U)
+              dut.io.co.expect(0.U)  // No carry out
+            } else {
+              // Overflow case (result > 15)
+              dut.io.a.poke(a.U)
+              dut.io.b.poke(b.U)
+              dut.io.s.expect((result & 0xF).U)  // Only lower 4 bits
+              dut.io.co.expect(1.U)  // Carry out is 1
+            }
+          }
+        }
         
       
     } 

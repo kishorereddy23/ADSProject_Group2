@@ -24,11 +24,20 @@ class HalfAdder extends Module{
     /* 
      * TODO: Define IO ports of a half adder as presented in the lecture
      */
+    val a  = Input(UInt(1.W))   // First input bit
+    val b  = Input(UInt(1.W))   // Second input bit
+    val s  = Output(UInt(1.W))  // Sum output
+    val c  = Output(UInt(1.W))  // Carry output
     })
 
   /* 
    * TODO: Describe output behaviour based on the input values
    */
+  // Sum = A XOR B
+  io.s := io.a ^ io.b
+
+  // Carry = A AND B
+  io.c := io.a & io.b
 
 }
 
@@ -49,17 +58,37 @@ class FullAdder extends Module{
     /* 
      * TODO: Define IO ports of a half adder as presented in the lecture
      */
+    val a  = Input(UInt(1.W))   // First input bit
+    val b  = Input(UInt(1.W))   // Second input bit
+    val ci = Input(UInt(1.W))   // Carry input
+    val s  = Output(UInt(1.W))  // Sum output
+    val co = Output(UInt(1.W))  // Carry output
     })
 
 
   /* 
    * TODO: Instanciate the two half adders you want to use based on your HalfAdder class
    */
+  val ha1 = Module(new HalfAdder())
+  val ha2 = Module(new HalfAdder())
 
 
   /* 
    * TODO: Describe output behaviour based on the input values and the internal signals
    */
+  // First half adder: Add a and b
+  ha1.io.a := io.a
+  ha1.io.b := io.b
+
+  // Second half adder: Add result with carry-in
+  ha2.io.a := ha1.io.s
+  ha2.io.b := io.ci
+
+  // Output connections
+  io.s := ha2.io.s  // Final sum from second half adder
+  
+  // Carry out is OR of both carry outputs
+  io.co := ha1.io.c | ha2.io.c
 
 }
 
@@ -79,14 +108,56 @@ class FourBitAdder extends Module{
     /* 
      * TODO: Define IO ports of a 4-bit ripple-carry-adder as presented in the lecture
      */
+    val a  = Input(UInt(4.W))   // First 4-bit operand
+    val b  = Input(UInt(4.W))   // Second 4-bit operand
+    val s  = Output(UInt(4.W))  // 4-bit sum output
+    val co = Output(UInt(1.W))  // Final carry output
     })
 
   /* 
    * TODO: Instanciate the full adders and one half adderbased on the previously defined classes
    */
 
+  val ha = Module(new HalfAdder())
+  val fa1 = Module(new FullAdder())
+  val fa2 = Module(new FullAdder())
+  val fa3 = Module(new FullAdder())
+
 
   /* 
    * TODO: Describe output behaviour based on the input values and the internal 
    */
+  
+  // Internal carry wires
+  val c0 = Wire(UInt(1.W))
+  val c1 = Wire(UInt(1.W))
+  val c2 = Wire(UInt(1.W))
+
+  // Bit 0 (LSB): Half Adder
+  ha.io.a := io.a(0)
+  ha.io.b := io.b(0)
+  c0 := ha.io.c
+
+  // Bit 1: Full Adder
+  fa1.io.a  := io.a(1)
+  fa1.io.b  := io.b(1)
+  fa1.io.ci := c0
+  c1 := fa1.io.co
+
+  // Bit 2: Full Adder
+  fa2.io.a  := io.a(2)
+  fa2.io.b  := io.b(2)
+  fa2.io.ci := c1
+  c2 := fa2.io.co
+
+  // Bit 3 (MSB): Full Adder
+  fa3.io.a  := io.a(3)
+  fa3.io.b  := io.b(3)
+  fa3.io.ci := c2
+
+  // Concatenate all sum bits from MSB to LSB
+  io.s := Cat(fa3.io.s, fa2.io.s, fa1.io.s, ha.io.s)
+  
+  // Final carry out from MSB
+  io.co := fa3.io.co
 }
