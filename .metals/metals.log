@@ -1,0 +1,182 @@
+2025.12.06 14:10:20 INFO  Started: Metals version 1.6.4 in folders '/home/kreddy/ADSProject_Group2' for client Visual Studio Code 1.106.3.[0m
+2025.12.06 14:10:22 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.[0m
+2025.12.06 14:10:23 INFO  no build target found for /home/kreddy/ADSProject_Group2/01_warm-up/src/main/scala/Adder.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.06 14:10:28 ERROR Error downloading Dependency(org.scala-lang:scala3-presentation-compiler_3, 3.3.6, Configuration(), Set(), Publication(, Type(), Extension(), Classifier()), false, true)
+coursier.error.ResolutionError$CantDownloadModule: Error downloading org.lz4:lz4-java:1.8.0
+  not found: /home/kreddy/.ivy2/local/org.lz4/lz4-java/1.8.0/ivys/ivy.xml
+  checksum format error: /home/kreddy/.cache/coursier/v1/https/repo1.maven.org/maven2/org/lz4/lz4-java/1.8.0/.lz4-java-1.8.0.pom__sha1
+  not found: /home/kreddy/.m2/repository/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.pom
+  not found: https://central.sonatype.com/repository/maven-snapshots/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.pom
+	at coursier.Resolve$.$anonfun$validate$1(Resolve.scala:490)
+	at scala.collection.immutable.List.map(List.scala:236)
+	at scala.collection.immutable.List.map(List.scala:79)
+	at coursier.Resolve$.validate(Resolve.scala:488)
+	at coursier.Resolve.validate0$1(Resolve.scala:231)
+	at coursier.Resolve.$anonfun$ioWithConflicts0$6(Resolve.scala:281)
+	at coursier.util.Task$.$anonfun$flatMap$extension$1(Task.scala:14)
+	at coursier.util.Task$.$anonfun$flatMap$extension$1$adapted(Task.scala:14)
+	at coursier.util.Task$.wrap(Task.scala:82)
+	at coursier.util.Task$.$anonfun$flatMap$2(Task.scala:14)
+	at scala.concurrent.impl.Promise$Transformation.run(Promise.scala:503)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:840)
+[0m
+2025.12.06 14:10:28 INFO  Found coursier in path under /home/kreddy/.local/share/coursier/bin/cs, using it to fetch dependency[0m
+2025.12.06 14:10:29 ERROR Resolution error: Error downloading org.lz4:lz4-java:1.8.0[0m
+2025.12.06 14:10:29 ERROR   not found: /home/kreddy/.ivy2/local/org.lz4/lz4-java/1.8.0/ivys/ivy.xml[0m
+2025.12.06 14:10:29 ERROR   checksum format error: /home/kreddy/.cache/coursier/v1/https/repo1.maven.org/maven2/org/lz4/lz4-java/1.8.0/.lz4-java-1.8.0.pom__sha1[0m
+2025.12.06 14:10:31 ERROR Error downloading Dependency(org.scala-lang:scala3-presentation-compiler_3, 3.3.6, Configuration(), Set(), Publication(, Type(), Extension(), Classifier()), false, true)
+coursier.error.ResolutionError$CantDownloadModule: Error downloading org.lz4:lz4-java:1.8.0
+  not found: /home/kreddy/.ivy2/local/org.lz4/lz4-java/1.8.0/ivys/ivy.xml
+  checksum format error: /home/kreddy/.cache/coursier/v1/https/repo1.maven.org/maven2/org/lz4/lz4-java/1.8.0/.lz4-java-1.8.0.pom__sha1
+  not found: /home/kreddy/.m2/repository/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.pom
+  not found: https://central.sonatype.com/repository/maven-snapshots/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.pom
+	at coursier.Resolve$.$anonfun$validate$1(Resolve.scala:490)
+	at scala.collection.immutable.List.map(List.scala:236)
+	at scala.collection.immutable.List.map(List.scala:79)
+	at coursier.Resolve$.validate(Resolve.scala:488)
+	at coursier.Resolve.validate0$1(Resolve.scala:231)
+	at coursier.Resolve.$anonfun$ioWithConflicts0$6(Resolve.scala:281)
+	at coursier.util.Task$.$anonfun$flatMap$extension$1(Task.scala:14)
+	at coursier.util.Task$.$anonfun$flatMap$extension$1$adapted(Task.scala:14)
+	at coursier.util.Task$.wrap(Task.scala:82)
+	at coursier.util.Task$.$anonfun$flatMap$2(Task.scala:14)
+	at scala.concurrent.impl.Promise$Transformation.run(Promise.scala:503)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:840)
+[0m
+2025.12.06 14:10:31 INFO  Found coursier in path under /home/kreddy/.local/share/coursier/bin/cs, using it to fetch dependency[0m
+2025.12.06 14:10:32 ERROR Resolution error: Error downloading org.lz4:lz4-java:1.8.0[0m
+2025.12.06 14:10:32 ERROR   not found: /home/kreddy/.ivy2/local/org.lz4/lz4-java/1.8.0/ivys/ivy.xml[0m
+2025.12.06 14:10:32 ERROR   checksum format error: /home/kreddy/.cache/coursier/v1/https/repo1.maven.org/maven2/org/lz4/lz4-java/1.8.0/.lz4-java-1.8.0.pom__sha1[0m
+2025.12.06 14:10:36 ERROR Error downloading Dependency(org.scala-lang:scala3-presentation-compiler_3, 3.3.6, Configuration(), Set(), Publication(, Type(), Extension(), Classifier()), false, true)
+coursier.error.ResolutionError$CantDownloadModule: Error downloading org.lz4:lz4-java:1.8.0
+  not found: /home/kreddy/.ivy2/local/org.lz4/lz4-java/1.8.0/ivys/ivy.xml
+  checksum format error: /home/kreddy/.cache/coursier/v1/https/repo1.maven.org/maven2/org/lz4/lz4-java/1.8.0/.lz4-java-1.8.0.pom__sha1
+  not found: /home/kreddy/.m2/repository/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.pom
+  not found: https://central.sonatype.com/repository/maven-snapshots/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.pom
+	at coursier.Resolve$.$anonfun$validate$1(Resolve.scala:490)
+	at scala.collection.immutable.List.map(List.scala:236)
+	at scala.collection.immutable.List.map(List.scala:79)
+	at coursier.Resolve$.validate(Resolve.scala:488)
+	at coursier.Resolve.validate0$1(Resolve.scala:231)
+	at coursier.Resolve.$anonfun$ioWithConflicts0$6(Resolve.scala:281)
+	at coursier.util.Task$.$anonfun$flatMap$extension$1(Task.scala:14)
+	at coursier.util.Task$.$anonfun$flatMap$extension$1$adapted(Task.scala:14)
+	at coursier.util.Task$.wrap(Task.scala:82)
+	at coursier.util.Task$.$anonfun$flatMap$2(Task.scala:14)
+	at scala.concurrent.impl.Promise$Transformation.run(Promise.scala:503)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:840)
+[0m
+2025.12.06 14:10:36 INFO  Found coursier in path under /home/kreddy/.local/share/coursier/bin/cs, using it to fetch dependency[0m
+2025.12.06 14:10:36 ERROR Resolution error: Error downloading org.lz4:lz4-java:1.8.0[0m
+2025.12.06 14:10:36 ERROR   not found: /home/kreddy/.ivy2/local/org.lz4/lz4-java/1.8.0/ivys/ivy.xml[0m
+2025.12.06 14:10:36 ERROR   checksum format error: /home/kreddy/.cache/coursier/v1/https/repo1.maven.org/maven2/org/lz4/lz4-java/1.8.0/.lz4-java-1.8.0.pom__sha1[0m
+2025.12.06 14:10:38 ERROR Error downloading Dependency(org.scala-lang:scala3-presentation-compiler_3, 3.3.6, Configuration(), Set(), Publication(, Type(), Extension(), Classifier()), false, true)
+coursier.error.ResolutionError$CantDownloadModule: Error downloading org.lz4:lz4-java:1.8.0
+  not found: /home/kreddy/.ivy2/local/org.lz4/lz4-java/1.8.0/ivys/ivy.xml
+  checksum format error: /home/kreddy/.cache/coursier/v1/https/repo1.maven.org/maven2/org/lz4/lz4-java/1.8.0/.lz4-java-1.8.0.pom__sha1
+  not found: /home/kreddy/.m2/repository/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.pom
+  not found: https://central.sonatype.com/repository/maven-snapshots/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.pom
+	at coursier.Resolve$.$anonfun$validate$1(Resolve.scala:490)
+	at scala.collection.immutable.List.map(List.scala:236)
+	at scala.collection.immutable.List.map(List.scala:79)
+	at coursier.Resolve$.validate(Resolve.scala:488)
+	at coursier.Resolve.validate0$1(Resolve.scala:231)
+	at coursier.Resolve.$anonfun$ioWithConflicts0$6(Resolve.scala:281)
+	at coursier.util.Task$.$anonfun$flatMap$extension$1(Task.scala:14)
+	at coursier.util.Task$.$anonfun$flatMap$extension$1$adapted(Task.scala:14)
+	at coursier.util.Task$.wrap(Task.scala:82)
+	at coursier.util.Task$.$anonfun$flatMap$2(Task.scala:14)
+	at scala.concurrent.impl.Promise$Transformation.run(Promise.scala:503)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:840)
+[0m
+2025.12.06 14:10:38 INFO  Found coursier in path under /home/kreddy/.local/share/coursier/bin/cs, using it to fetch dependency[0m
+2025.12.06 14:10:39 ERROR Resolution error: Error downloading org.lz4:lz4-java:1.8.0[0m
+2025.12.06 14:10:39 ERROR   not found: /home/kreddy/.ivy2/local/org.lz4/lz4-java/1.8.0/ivys/ivy.xml[0m
+2025.12.06 14:10:39 ERROR   checksum format error: /home/kreddy/.cache/coursier/v1/https/repo1.maven.org/maven2/org/lz4/lz4-java/1.8.0/.lz4-java-1.8.0.pom__sha1[0m
+2025.12.06 14:10:41 ERROR Error downloading Dependency(org.scala-lang:scala3-presentation-compiler_3, 3.3.6, Configuration(), Set(), Publication(, Type(), Extension(), Classifier()), false, true)
+coursier.error.ResolutionError$CantDownloadModule: Error downloading org.lz4:lz4-java:1.8.0
+  not found: /home/kreddy/.ivy2/local/org.lz4/lz4-java/1.8.0/ivys/ivy.xml
+  checksum format error: /home/kreddy/.cache/coursier/v1/https/repo1.maven.org/maven2/org/lz4/lz4-java/1.8.0/.lz4-java-1.8.0.pom__sha1
+  not found: /home/kreddy/.m2/repository/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.pom
+  not found: https://central.sonatype.com/repository/maven-snapshots/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.pom
+	at coursier.Resolve$.$anonfun$validate$1(Resolve.scala:490)
+	at scala.collection.immutable.List.map(List.scala:236)
+	at scala.collection.immutable.List.map(List.scala:79)
+	at coursier.Resolve$.validate(Resolve.scala:488)
+	at coursier.Resolve.validate0$1(Resolve.scala:231)
+	at coursier.Resolve.$anonfun$ioWithConflicts0$6(Resolve.scala:281)
+	at coursier.util.Task$.$anonfun$flatMap$extension$1(Task.scala:14)
+	at coursier.util.Task$.$anonfun$flatMap$extension$1$adapted(Task.scala:14)
+	at coursier.util.Task$.wrap(Task.scala:82)
+	at coursier.util.Task$.$anonfun$flatMap$2(Task.scala:14)
+	at scala.concurrent.impl.Promise$Transformation.run(Promise.scala:503)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:840)
+[0m
+2025.12.06 14:10:41 INFO  Found coursier in path under /home/kreddy/.local/share/coursier/bin/cs, using it to fetch dependency[0m
+2025.12.06 14:10:41 ERROR Resolution error: Error downloading org.lz4:lz4-java:1.8.0[0m
+2025.12.06 14:10:41 ERROR   not found: /home/kreddy/.ivy2/local/org.lz4/lz4-java/1.8.0/ivys/ivy.xml[0m
+2025.12.06 14:10:41 ERROR   checksum format error: /home/kreddy/.cache/coursier/v1/https/repo1.maven.org/maven2/org/lz4/lz4-java/1.8.0/.lz4-java-1.8.0.pom__sha1[0m
+2025.12.06 14:10:43 ERROR Error downloading Dependency(org.scala-lang:scala3-presentation-compiler_3, 3.3.6, Configuration(), Set(), Publication(, Type(), Extension(), Classifier()), false, true)
+coursier.error.ResolutionError$CantDownloadModule: Error downloading org.lz4:lz4-java:1.8.0
+  not found: /home/kreddy/.ivy2/local/org.lz4/lz4-java/1.8.0/ivys/ivy.xml
+  checksum format error: /home/kreddy/.cache/coursier/v1/https/repo1.maven.org/maven2/org/lz4/lz4-java/1.8.0/.lz4-java-1.8.0.pom__sha1
+  not found: /home/kreddy/.m2/repository/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.pom
+  not found: https://central.sonatype.com/repository/maven-snapshots/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.pom
+	at coursier.Resolve$.$anonfun$validate$1(Resolve.scala:490)
+	at scala.collection.immutable.List.map(List.scala:236)
+	at scala.collection.immutable.List.map(List.scala:79)
+	at coursier.Resolve$.validate(Resolve.scala:488)
+	at coursier.Resolve.validate0$1(Resolve.scala:231)
+	at coursier.Resolve.$anonfun$ioWithConflicts0$6(Resolve.scala:281)
+	at coursier.util.Task$.$anonfun$flatMap$extension$1(Task.scala:14)
+	at coursier.util.Task$.$anonfun$flatMap$extension$1$adapted(Task.scala:14)
+	at coursier.util.Task$.wrap(Task.scala:82)
+	at coursier.util.Task$.$anonfun$flatMap$2(Task.scala:14)
+	at scala.concurrent.impl.Promise$Transformation.run(Promise.scala:503)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:840)
+[0m
+2025.12.06 14:10:43 INFO  Found coursier in path under /home/kreddy/.local/share/coursier/bin/cs, using it to fetch dependency[0m
+2025.12.06 14:10:44 ERROR Resolution error: Error downloading org.lz4:lz4-java:1.8.0[0m
+2025.12.06 14:10:44 ERROR   not found: /home/kreddy/.ivy2/local/org.lz4/lz4-java/1.8.0/ivys/ivy.xml[0m
+2025.12.06 14:10:44 ERROR   checksum format error: /home/kreddy/.cache/coursier/v1/https/repo1.maven.org/maven2/org/lz4/lz4-java/1.8.0/.lz4-java-1.8.0.pom__sha1[0m
+2025.12.06 14:10:44 ERROR Failed to resolve Scala 3 presentation compiler for 3.3.6
+coursier.error.ResolutionError$CantDownloadModule: Error downloading org.lz4:lz4-java:1.8.0
+  not found: /home/kreddy/.ivy2/local/org.lz4/lz4-java/1.8.0/ivys/ivy.xml
+  checksum format error: /home/kreddy/.cache/coursier/v1/https/repo1.maven.org/maven2/org/lz4/lz4-java/1.8.0/.lz4-java-1.8.0.pom__sha1
+  not found: /home/kreddy/.m2/repository/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.pom
+  not found: https://central.sonatype.com/repository/maven-snapshots/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.pom
+	at coursier.Resolve$.$anonfun$validate$1(Resolve.scala:490)
+	at scala.collection.immutable.List.map(List.scala:236)
+	at scala.collection.immutable.List.map(List.scala:79)
+	at coursier.Resolve$.validate(Resolve.scala:488)
+	at coursier.Resolve.validate0$1(Resolve.scala:231)
+	at coursier.Resolve.$anonfun$ioWithConflicts0$6(Resolve.scala:281)
+	at coursier.util.Task$.$anonfun$flatMap$extension$1(Task.scala:14)
+	at coursier.util.Task$.$anonfun$flatMap$extension$1$adapted(Task.scala:14)
+	at coursier.util.Task$.wrap(Task.scala:82)
+	at coursier.util.Task$.$anonfun$flatMap$2(Task.scala:14)
+	at scala.concurrent.impl.Promise$Transformation.run(Promise.scala:503)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:840)
+[0m
+2025.12.06 14:10:44 INFO  no build target found for /home/kreddy/ADSProject_Group2/01_warm-up/src/main/scala/Adder.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.06 14:11:54 INFO  no build target found for /home/kreddy/ADSProject_Group2/01_warm-up/src/main/scala/Adder.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.06 14:11:57 INFO  no build target found for /home/kreddy/ADSProject_Group2/01_warm-up/src/main/scala/Adder.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.06 14:11:57 WARN  no build target for: /home/kreddy/ADSProject_Group2/01_warm-up/src/main/scala/Adder.scala[0m
+2025.12.06 14:11:57 INFO  no build target found for /home/kreddy/ADSProject_Group2/01_warm-up/src/main/scala/Adder.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.06 14:11:57 INFO  no build target found for /home/kreddy/ADSProject_Group2/01_warm-up/src/main/scala/Adder.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.06 14:11:58 INFO  time: code lens generation in 1.23s[0m
+2025.12.06 14:11:58 INFO  time: code lens generation in 1.23s[0m

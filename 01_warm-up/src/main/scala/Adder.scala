@@ -158,6 +158,6 @@ class FourBitAdder extends Module{
   // Concatenate all sum bits from MSB to LSB
   io.s := Cat(fa3.io.s, fa2.io.s, fa1.io.s, ha.io.s)
   
-  // Final carry out from MSB
+  // Final carry out from MSB has been done
   io.co := fa3.io.co
 }
