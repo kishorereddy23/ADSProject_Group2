@@ -57,6 +57,54 @@ class ALUAddTest extends AnyFlatSpec with ChiselScalatestTester {
 }
 
 // =============================================================================
+// TDD CYCLE 8: SRA (Shift Right Arithmetic) Operation
+// =============================================================================
+
+// Test SRA operation
+class ALUSraTest extends AnyFlatSpec with ChiselScalatestTester {
+  "ALU_Sra_Tester" should "test SRA operation" in {
+    test(new ALU).withAnnotations(Seq(WriteVcdAnnotation)) { dut =>
+      dut.clock.setTimeout(0)
+
+      // Test Case 1: Positive number shift by 4 (same as SRL)
+      dut.io.operandA.poke("h12345678".U)
+      dut.io.operandB.poke(4.U)
+      dut.io.operation.poke(ALUOp.SRA)
+      dut.io.aluResult.expect("h01234567".U)
+      dut.clock.step(1)
+
+      // Test Case 2: Negative number shift by 4 (sign extension)
+      dut.io.operandA.poke("h80000000".U)  // Most negative: -2147483648
+      dut.io.operandB.poke(4.U)
+      dut.io.operation.poke(ALUOp.SRA)
+      dut.io.aluResult.expect("hF8000000".U)  // Sign extended
+      dut.clock.step(1)
+
+      // Test Case 3: Negative number shift by 31 (all ones)
+      dut.io.operandA.poke("h80000000".U)
+      dut.io.operandB.poke(31.U)
+      dut.io.operation.poke(ALUOp.SRA)
+      dut.io.aluResult.expect("hFFFFFFFF".U)
+      dut.clock.step(1)
+
+      // Test Case 4: Shift by 0
+      dut.io.operandA.poke("hFFFFFFFF".U)
+      dut.io.operandB.poke(0.U)
+      dut.io.operation.poke(ALUOp.SRA)
+      dut.io.aluResult.expect("hFFFFFFFF".U)
+      dut.clock.step(1)
+
+      // Test Case 5: Negative number, various shifts
+      dut.io.operandA.poke("hFFFFFF00".U)  // -256
+      dut.io.operandB.poke(8.U)
+      dut.io.operation.poke(ALUOp.SRA)
+      dut.io.aluResult.expect("hFFFFFFFF".U)
+      dut.clock.step(1)
+    }
+  }
+}
+
+// =============================================================================
 // TDD CYCLE 7: SRL (Shift Right Logical) Operation
 // =============================================================================
 
