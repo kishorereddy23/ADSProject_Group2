@@ -57,6 +57,47 @@ class ALUAddTest extends AnyFlatSpec with ChiselScalatestTester {
 }
 
 // =============================================================================
+// TDD CYCLE 5: XOR Operation
+// =============================================================================
+
+// Test XOR operation
+class ALUXorTest extends AnyFlatSpec with ChiselScalatestTester {
+  "ALU_Xor_Tester" should "test XOR operation" in {
+    test(new ALU).withAnnotations(Seq(WriteVcdAnnotation)) { dut =>
+      dut.clock.setTimeout(0)
+
+      // Test Case 1: Basic XOR
+      dut.io.operandA.poke("hFF00FF00".U)
+      dut.io.operandB.poke("h0F0F0F0F".U)
+      dut.io.operation.poke(ALUOp.XOR)
+      dut.io.aluResult.expect("hF00FF00F".U)
+      dut.clock.step(1)
+
+      // Test Case 2: XOR with itself (should be zero)
+      dut.io.operandA.poke("h12345678".U)
+      dut.io.operandB.poke("h12345678".U)
+      dut.io.operation.poke(ALUOp.XOR)
+      dut.io.aluResult.expect(0.U)
+      dut.clock.step(1)
+
+      // Test Case 3: XOR with all ones (inverts)
+      dut.io.operandA.poke("h12345678".U)
+      dut.io.operandB.poke("hFFFFFFFF".U)
+      dut.io.operation.poke(ALUOp.XOR)
+      dut.io.aluResult.expect("hEDCBA987".U)
+      dut.clock.step(1)
+
+      // Test Case 4: XOR with zero (identity)
+      dut.io.operandA.poke("hAAAAAAAA".U)
+      dut.io.operandB.poke(0.U)
+      dut.io.operation.poke(ALUOp.XOR)
+      dut.io.aluResult.expect("hAAAAAAAA".U)
+      dut.clock.step(1)
+    }
+  }
+}
+
+// =============================================================================
 // TDD CYCLE 4: OR Operation
 // =============================================================================
 
