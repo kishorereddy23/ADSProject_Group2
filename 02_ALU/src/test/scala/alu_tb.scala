@@ -57,6 +57,61 @@ class ALUAddTest extends AnyFlatSpec with ChiselScalatestTester {
 }
 
 // =============================================================================
+// TDD CYCLE 9: SLT (Set Less Than - Signed) Operation
+// =============================================================================
+
+// Test SLT operation
+class ALUSltTest extends AnyFlatSpec with ChiselScalatestTester {
+  "ALU_Slt_Tester" should "test SLT operation" in {
+    test(new ALU).withAnnotations(Seq(WriteVcdAnnotation)) { dut =>
+      dut.clock.setTimeout(0)
+
+      // Test Case 1: Positive < Positive (true)
+      dut.io.operandA.poke(10.U)
+      dut.io.operandB.poke(20.U)
+      dut.io.operation.poke(ALUOp.SLT)
+      dut.io.aluResult.expect(1.U)
+      dut.clock.step(1)
+
+      // Test Case 2: Positive < Positive (false)
+      dut.io.operandA.poke(20.U)
+      dut.io.operandB.poke(10.U)
+      dut.io.operation.poke(ALUOp.SLT)
+      dut.io.aluResult.expect(0.U)
+      dut.clock.step(1)
+
+      // Test Case 3: Equal values (false)
+      dut.io.operandA.poke(10.U)
+      dut.io.operandB.poke(10.U)
+      dut.io.operation.poke(ALUOp.SLT)
+      dut.io.aluResult.expect(0.U)
+      dut.clock.step(1)
+
+      // Test Case 4: Negative < Positive (true)
+      dut.io.operandA.poke("h80000000".U) // -2147483648
+      dut.io.operandB.poke(1.U)
+      dut.io.operation.poke(ALUOp.SLT)
+      dut.io.aluResult.expect(1.U)
+      dut.clock.step(1)
+
+      // Test Case 5: Positive < Negative (false)
+      dut.io.operandA.poke(1.U)
+      dut.io.operandB.poke("hFFFFFFFF".U) // -1
+      dut.io.operation.poke(ALUOp.SLT)
+      dut.io.aluResult.expect(0.U)
+      dut.clock.step(1)
+
+      // Test Case 6: Negative < Negative (true: -1 < -2 is false, but -2 < -1 is true)
+      dut.io.operandA.poke("hFFFFFFFE".U) // -2
+      dut.io.operandB.poke("hFFFFFFFF".U) // -1
+      dut.io.operation.poke(ALUOp.SLT)
+      dut.io.aluResult.expect(1.U)
+      dut.clock.step(1)
+    }
+  }
+}
+
+// =============================================================================
 // TDD CYCLE 8: SRA (Shift Right Arithmetic) Operation
 // =============================================================================
 
