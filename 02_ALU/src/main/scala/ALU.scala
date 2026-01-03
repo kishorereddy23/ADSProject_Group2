@@ -79,6 +79,13 @@ class ALU extends Module {
       // Shift Left Logical - use only lower 5 bits of operandB
       io.aluResult := io.operandA << io.operandB(4, 0)
     }
+    // =============================================================================
+    // TDD CYCLE 7: SRL (Shift Right Logical) Operation Implementation
+    // =============================================================================
+    is(ALUOp.SRL) {
+      // Shift Right Logical - use only lower 5 bits of operandB
+      io.aluResult := io.operandA >> io.operandB(4, 0)
+    }
   }
 
 }
