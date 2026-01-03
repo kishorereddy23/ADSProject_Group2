@@ -57,6 +57,54 @@ class ALUAddTest extends AnyFlatSpec with ChiselScalatestTester {
 }
 
 // =============================================================================
+// TDD CYCLE 7: SRL (Shift Right Logical) Operation
+// =============================================================================
+
+// Test SRL operation
+class ALUSrlTest extends AnyFlatSpec with ChiselScalatestTester {
+  "ALU_Srl_Tester" should "test SRL operation" in {
+    test(new ALU).withAnnotations(Seq(WriteVcdAnnotation)) { dut =>
+      dut.clock.setTimeout(0)
+
+      // Test Case 1: Shift by 0 (no change)
+      dut.io.operandA.poke("h12345678".U)
+      dut.io.operandB.poke(0.U)
+      dut.io.operation.poke(ALUOp.SRL)
+      dut.io.aluResult.expect("h12345678".U)
+      dut.clock.step(1)
+
+      // Test Case 2: Shift by 4
+      dut.io.operandA.poke("h12345678".U)
+      dut.io.operandB.poke(4.U)
+      dut.io.operation.poke(ALUOp.SRL)
+      dut.io.aluResult.expect("h01234567".U)
+      dut.clock.step(1)
+
+      // Test Case 3: Shift by 31 (maximum)
+      dut.io.operandA.poke("h80000000".U)
+      dut.io.operandB.poke(31.U)
+      dut.io.operation.poke(ALUOp.SRL)
+      dut.io.aluResult.expect(1.U)
+      dut.clock.step(1)
+
+      // Test Case 4: Only lower 5 bits used (shift by 36 = shift by 4)
+      dut.io.operandA.poke("h12345678".U)
+      dut.io.operandB.poke(36.U)  // 36 & 0x1F = 4
+      dut.io.operation.poke(ALUOp.SRL)
+      dut.io.aluResult.expect("h01234567".U)
+      dut.clock.step(1)
+
+      // Test Case 5: Logical shift of negative (no sign extension)
+      dut.io.operandA.poke("hFFFFFFFF".U)
+      dut.io.operandB.poke(4.U)
+      dut.io.operation.poke(ALUOp.SRL)
+      dut.io.aluResult.expect("h0FFFFFFF".U)
+      dut.clock.step(1)
+    }
+  }
+}
+
+// =============================================================================
 // TDD CYCLE 6: SLL (Shift Left Logical) Operation
 // =============================================================================
 
