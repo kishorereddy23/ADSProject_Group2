@@ -72,6 +72,13 @@ class ALU extends Module {
       // Bitwise XOR
       io.aluResult := io.operandA ^ io.operandB
     }
+    // =============================================================================
+    // TDD CYCLE 6: SLL (Shift Left Logical) Operation Implementation
+    // =============================================================================
+    is(ALUOp.SLL) {
+      // Shift Left Logical - use only lower 5 bits of operandB
+      io.aluResult := io.operandA << io.operandB(4, 0)
+    }
   }
 
 }
