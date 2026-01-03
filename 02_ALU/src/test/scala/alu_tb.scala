@@ -57,6 +57,47 @@ class ALUAddTest extends AnyFlatSpec with ChiselScalatestTester {
 }
 
 // =============================================================================
+// TDD CYCLE 3: AND Operation
+// =============================================================================
+
+// Test AND operation
+class ALUAndTest extends AnyFlatSpec with ChiselScalatestTester {
+  "ALU_And_Tester" should "test AND operation" in {
+    test(new ALU).withAnnotations(Seq(WriteVcdAnnotation)) { dut =>
+      dut.clock.setTimeout(0)
+
+      // Test Case 1: Basic AND
+      dut.io.operandA.poke("hFF00FF00".U)
+      dut.io.operandB.poke("h0F0F0F0F".U)
+      dut.io.operation.poke(ALUOp.AND)
+      dut.io.aluResult.expect("h0F000F00".U)
+      dut.clock.step(1)
+
+      // Test Case 2: AND with all ones (identity)
+      dut.io.operandA.poke("h12345678".U)
+      dut.io.operandB.poke("hFFFFFFFF".U)
+      dut.io.operation.poke(ALUOp.AND)
+      dut.io.aluResult.expect("h12345678".U)
+      dut.clock.step(1)
+
+      // Test Case 3: AND with zero
+      dut.io.operandA.poke("hFFFFFFFF".U)
+      dut.io.operandB.poke(0.U)
+      dut.io.operation.poke(ALUOp.AND)
+      dut.io.aluResult.expect(0.U)
+      dut.clock.step(1)
+
+      // Test Case 4: AND with itself
+      dut.io.operandA.poke("hAAAAAAAA".U)
+      dut.io.operandB.poke("hAAAAAAAA".U)
+      dut.io.operation.poke(ALUOp.AND)
+      dut.io.aluResult.expect("hAAAAAAAA".U)
+      dut.clock.step(1)
+    }
+  }
+}
+
+// =============================================================================
 // TDD CYCLE 2: SUB Operation
 // =============================================================================
 
