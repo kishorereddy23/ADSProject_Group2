@@ -11,14 +11,40 @@ import chisel3._
 import chisel3.util._
 import chisel3.experimental.ChiselEnum
 
-//ToDo: define AluOp Enum
+// Define the ALU Operation Enum
+object ALUOp extends ChiselEnum {
+  val ADD   = Value(0x0.U)
+  val SUB   = Value(0x1.U)
+  val AND   = Value(0x2.U)
+  val OR    = Value(0x3.U)
+  val XOR   = Value(0x4.U)
+  val SLL   = Value(0x5.U)
+  val SRL   = Value(0x6.U)
+  val SRA   = Value(0x7.U)
+  val SLT   = Value(0x8.U)
+  val SLTU  = Value(0x9.U)
+  val PASSB = Value(0xA.U)
+}
 
 class ALU extends Module {
   
   val io = IO(new Bundle {
-    //ToDo: define IOs
+    val operandA  = Input(UInt(32.W))
+    val operandB  = Input(UInt(32.W))
+    val operation = Input(ALUOp())
+    val aluResult = Output(UInt(32.W))
   })
 
-  //ToDo: implement ALU functionality according to the task specification
+io.aluResult := 0.U
+
+// =============================================================================
+  // TDD CYCLE 1: ADD Operation Implementation
+  // =============================================================================
+  switch(io.operation) {
+    is(ALUOp.ADD) {
+      // Addition with wraparound (modulo 2^32)
+      io.aluResult := io.operandA + io.operandB
+    }
+  }
 
 }
