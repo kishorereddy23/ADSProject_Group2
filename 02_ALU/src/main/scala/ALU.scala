@@ -86,6 +86,13 @@ class ALU extends Module {
       // Shift Right Logical - use only lower 5 bits of operandB
       io.aluResult := io.operandA >> io.operandB(4, 0)
     }
+    // =============================================================================
+    // TDD CYCLE 8: SRA (Shift Right Arithmetic) Operation Implementation
+    // =============================================================================
+    is(ALUOp.SRA) {
+      // Shift Right Arithmetic - treat operandA as signed
+      io.aluResult := (io.operandA.asSInt >> io.operandB(4, 0)).asUInt
+    }
   }
 
 }
