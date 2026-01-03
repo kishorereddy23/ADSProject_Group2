@@ -93,6 +93,13 @@ class ALU extends Module {
       // Shift Right Arithmetic - treat operandA as signed
       io.aluResult := (io.operandA.asSInt >> io.operandB(4, 0)).asUInt
     }
+    // =============================================================================
+    // TDD CYCLE 9: SLT (Set Less Than - Signed) Operation Implementation
+    // =============================================================================
+    is(ALUOp.SLT) {
+      // Set Less Than - signed comparison
+      io.aluResult := Mux(io.operandA.asSInt < io.operandB.asSInt, 1.U, 0.U)
+    }
   }
 
 }
