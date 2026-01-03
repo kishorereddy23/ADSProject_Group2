@@ -57,6 +57,62 @@ class ALUAddTest extends AnyFlatSpec with ChiselScalatestTester {
 }
 
 // =============================================================================
+// TDD CYCLE 10: SLTU (Set Less Than Unsigned) Operation
+// =============================================================================
+
+// Test SLTU operation
+class ALUSltuTest extends AnyFlatSpec with ChiselScalatestTester {
+  "ALU_Sltu_Tester" should "test SLTU operation" in {
+    test(new ALU).withAnnotations(Seq(WriteVcdAnnotation)) { dut =>
+      dut.clock.setTimeout(0)
+
+      // Test Case 1: Basic unsigned comparison (true)
+      dut.io.operandA.poke(10.U)
+      dut.io.operandB.poke(20.U)
+      dut.io.operation.poke(ALUOp.SLTU)
+      dut.io.aluResult.expect(1.U)
+      dut.clock.step(1)
+
+      // Test Case 2: Basic unsigned comparison (false)
+      dut.io.operandA.poke(20.U)
+      dut.io.operandB.poke(10.U)
+      dut.io.operation.poke(ALUOp.SLTU)
+      dut.io.aluResult.expect(0.U)
+      dut.clock.step(1)
+
+      // Test Case 3: Equal values (false)
+      dut.io.operandA.poke(10.U)
+      dut.io.operandB.poke(10.U)
+      dut.io.operation.poke(ALUOp.SLTU)
+      dut.io.aluResult.expect(0.U)
+      dut.clock.step(1)
+
+      // Test Case 4: Small < Large unsigned (true)
+      // Unlike SLT, 1 < 0xFFFFFFFF is TRUE in unsigned
+      dut.io.operandA.poke(1.U)
+      dut.io.operandB.poke("hFFFFFFFF".U)
+      dut.io.operation.poke(ALUOp.SLTU)
+      dut.io.aluResult.expect(1.U)
+      dut.clock.step(1)
+
+      // Test Case 5: Large < Small unsigned (false)
+      dut.io.operandA.poke("hFFFFFFFF".U)
+      dut.io.operandB.poke(1.U)
+      dut.io.operation.poke(ALUOp.SLTU)
+      dut.io.aluResult.expect(0.U)
+      dut.clock.step(1)
+
+      // Test Case 6: Zero comparison
+      dut.io.operandA.poke(0.U)
+      dut.io.operandB.poke(1.U)
+      dut.io.operation.poke(ALUOp.SLTU)
+      dut.io.aluResult.expect(1.U)
+      dut.clock.step(1)
+    }
+  }
+}
+
+// =============================================================================
 // TDD CYCLE 9: SLT (Set Less Than - Signed) Operation
 // =============================================================================
 
