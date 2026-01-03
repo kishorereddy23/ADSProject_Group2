@@ -2,8 +2,6 @@
 // Assignment 02: Arithmetic Logic Unit and UVM Testbench
 //
 // Chair of Electronic Design Automation, RPTU University Kaiserslautern-Landau
-// File created on 09/21/2025 by Tharindu Samarakoon (gug75kex@rptu.de)
-// File updated on 10/29/2025 by Tobias Jauch (tobias.jauch@rptu.de)
 
 package Assignment02
 
@@ -35,15 +33,23 @@ class ALU extends Module {
     val aluResult = Output(UInt(32.W))
   })
 
-io.aluResult := 0.U
+  // Default: output zero (all tests will fail initially)
+  io.aluResult := 0.U
 
-// =============================================================================
+  // =============================================================================
   // TDD CYCLE 1: ADD Operation Implementation
   // =============================================================================
   switch(io.operation) {
     is(ALUOp.ADD) {
       // Addition with wraparound (modulo 2^32)
       io.aluResult := io.operandA + io.operandB
+    }
+    // =============================================================================
+    // TDD CYCLE 2: SUB Operation Implementation
+    // =============================================================================
+    is(ALUOp.SUB) {
+      // Subtraction with wraparound
+      io.aluResult := io.operandA - io.operandB
     }
   }
 
