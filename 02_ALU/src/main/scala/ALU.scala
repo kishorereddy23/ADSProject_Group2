@@ -51,6 +51,13 @@ class ALU extends Module {
       // Subtraction with wraparound
       io.aluResult := io.operandA - io.operandB
     }
+    // =============================================================================
+    // TDD CYCLE 3: AND Operation Implementation
+    // =============================================================================
+    is(ALUOp.AND) {
+      // Bitwise AND
+      io.aluResult := io.operandA & io.operandB
+    }
   }
 
 }
