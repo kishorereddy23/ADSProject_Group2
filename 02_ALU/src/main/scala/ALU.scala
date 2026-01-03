@@ -65,6 +65,13 @@ class ALU extends Module {
       // Bitwise OR
       io.aluResult := io.operandA | io.operandB
     }
+    // =============================================================================
+    // TDD CYCLE 5: XOR Operation Implementation
+    // =============================================================================
+    is(ALUOp.XOR) {
+      // Bitwise XOR
+      io.aluResult := io.operandA ^ io.operandB
+    }
   }
 
 }
