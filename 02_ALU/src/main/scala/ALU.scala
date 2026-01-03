@@ -100,6 +100,13 @@ class ALU extends Module {
       // Set Less Than - signed comparison
       io.aluResult := Mux(io.operandA.asSInt < io.operandB.asSInt, 1.U, 0.U)
     }
+    // =============================================================================
+    // TDD CYCLE 10: SLTU (Set Less Than Unsigned) Operation Implementation
+    // =============================================================================
+    is(ALUOp.SLTU) {
+      // Set Less Than Unsigned
+      io.aluResult := Mux(io.operandA < io.operandB, 1.U, 0.U)
+    }
   }
 
 }
