@@ -57,6 +57,47 @@ class ALUAddTest extends AnyFlatSpec with ChiselScalatestTester {
 }
 
 // =============================================================================
+// TDD CYCLE 11: PASSB (Pass operandB) Operation
+// =============================================================================
+
+// Test PASSB operation
+class ALUPassbTest extends AnyFlatSpec with ChiselScalatestTester {
+  "ALU_Passb_Tester" should "test PASSB operation" in {
+    test(new ALU).withAnnotations(Seq(WriteVcdAnnotation)) { dut =>
+      dut.clock.setTimeout(0)
+
+      // Test Case 1: Pass various values
+      dut.io.operandA.poke(100.U)
+      dut.io.operandB.poke(200.U)
+      dut.io.operation.poke(ALUOp.PASSB)
+      dut.io.aluResult.expect(200.U)
+      dut.clock.step(1)
+
+      // Test Case 2: Pass zero
+      dut.io.operandA.poke("hFFFFFFFF".U)
+      dut.io.operandB.poke(0.U)
+      dut.io.operation.poke(ALUOp.PASSB)
+      dut.io.aluResult.expect(0.U)
+      dut.clock.step(1)
+
+      // Test Case 3: Pass max value
+      dut.io.operandA.poke(0.U)
+      dut.io.operandB.poke("hFFFFFFFF".U)
+      dut.io.operation.poke(ALUOp.PASSB)
+      dut.io.aluResult.expect("hFFFFFFFF".U)
+      dut.clock.step(1)
+
+      // Test Case 4: operandA should not affect result
+      dut.io.operandA.poke("h12345678".U)
+      dut.io.operandB.poke("hABCDEF00".U)
+      dut.io.operation.poke(ALUOp.PASSB)
+      dut.io.aluResult.expect("hABCDEF00".U)
+      dut.clock.step(1)
+    }
+  }
+}
+
+// =============================================================================
 // TDD CYCLE 10: SLTU (Set Less Than Unsigned) Operation
 // =============================================================================
 
