@@ -55,3 +55,51 @@ class ALUAddTest extends AnyFlatSpec with ChiselScalatestTester {
     }
   }
 }
+
+// =============================================================================
+// TDD CYCLE 2: SUB Operation
+// =============================================================================
+
+// Test SUB operation
+class ALUSubTest extends AnyFlatSpec with ChiselScalatestTester {
+  "ALU_Sub_Tester" should "test SUB operation" in {
+    test(new ALU).withAnnotations(Seq(WriteVcdAnnotation)) { dut =>
+      dut.clock.setTimeout(0)
+
+      // Test Case 1: Basic subtraction
+      dut.io.operandA.poke(20.U)
+      dut.io.operandB.poke(10.U)
+      dut.io.operation.poke(ALUOp.SUB)
+      dut.io.aluResult.expect(10.U)
+      dut.clock.step(1)
+
+      // Test Case 2: Subtract zero
+      dut.io.operandA.poke(100.U)
+      dut.io.operandB.poke(0.U)
+      dut.io.operation.poke(ALUOp.SUB)
+      dut.io.aluResult.expect(100.U)
+      dut.clock.step(1)
+
+      // Test Case 3: Result is zero
+      dut.io.operandA.poke(50.U)
+      dut.io.operandB.poke(50.U)
+      dut.io.operation.poke(ALUOp.SUB)
+      dut.io.aluResult.expect(0.U)
+      dut.clock.step(1)
+
+      // Test Case 4: Underflow (wraparound)
+      dut.io.operandA.poke(0.U)
+      dut.io.operandB.poke(1.U)
+      dut.io.operation.poke(ALUOp.SUB)
+      dut.io.aluResult.expect("hFFFFFFFF".U)
+      dut.clock.step(1)
+
+      // Test Case 5: Large subtraction
+      dut.io.operandA.poke("h80000000".U)
+      dut.io.operandB.poke(1.U)
+      dut.io.operation.poke(ALUOp.SUB)
+      dut.io.aluResult.expect("h7FFFFFFF".U)
+      dut.clock.step(1)
+    }
+  }
+}
