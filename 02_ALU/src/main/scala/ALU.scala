@@ -107,6 +107,13 @@ class ALU extends Module {
       // Set Less Than Unsigned
       io.aluResult := Mux(io.operandA < io.operandB, 1.U, 0.U)
     }
+    // =============================================================================
+    // TDD CYCLE 11: PASSB (Pass operandB) Operation Implementation
+    // =============================================================================
+    is(ALUOp.PASSB) {
+      // Pass operandB to output
+      io.aluResult := io.operandB
+    }
   }
 
 }
