@@ -57,6 +57,47 @@ class ALUAddTest extends AnyFlatSpec with ChiselScalatestTester {
 }
 
 // =============================================================================
+// TDD CYCLE 4: OR Operation
+// =============================================================================
+
+// Test OR operation
+class ALUOrTest extends AnyFlatSpec with ChiselScalatestTester {
+  "ALU_Or_Tester" should "test OR operation" in {
+    test(new ALU).withAnnotations(Seq(WriteVcdAnnotation)) { dut =>
+      dut.clock.setTimeout(0)
+
+      // Test Case 1: Basic OR
+      dut.io.operandA.poke("hFF00FF00".U)
+      dut.io.operandB.poke("h0F0F0F0F".U)
+      dut.io.operation.poke(ALUOp.OR)
+      dut.io.aluResult.expect("hFF0FFF0F".U)
+      dut.clock.step(1)
+
+      // Test Case 2: OR with zero (identity)
+      dut.io.operandA.poke("h12345678".U)
+      dut.io.operandB.poke(0.U)
+      dut.io.operation.poke(ALUOp.OR)
+      dut.io.aluResult.expect("h12345678".U)
+      dut.clock.step(1)
+
+      // Test Case 3: OR with all ones
+      dut.io.operandA.poke("h12345678".U)
+      dut.io.operandB.poke("hFFFFFFFF".U)
+      dut.io.operation.poke(ALUOp.OR)
+      dut.io.aluResult.expect("hFFFFFFFF".U)
+      dut.clock.step(1)
+
+      // Test Case 4: OR with itself
+      dut.io.operandA.poke("h55555555".U)
+      dut.io.operandB.poke("h55555555".U)
+      dut.io.operation.poke(ALUOp.OR)
+      dut.io.aluResult.expect("h55555555".U)
+      dut.clock.step(1)
+    }
+  }
+}
+
+// =============================================================================
 // TDD CYCLE 3: AND Operation
 // =============================================================================
 
