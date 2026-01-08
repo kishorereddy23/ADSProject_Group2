@@ -1,9 +1,20 @@
+error id: 2231967A81E4FA8A9DD04E7BCC30AB2E
+file://<WORKSPACE>/02_ALU/src/main/scala/ALU.scala
+### java.util.NoSuchElementException: head of empty String
+
+occurred in the presentation compiler.
+
+
+
+action parameters:
+offset: 1142
+uri: file://<WORKSPACE>/02_ALU/src/main/scala/ALU.scala
+text:
+```scala
 // ADS I Class Project
 // Assignment 02: Arithmetic Logic Unit and UVM Testbench
 //
 // Chair of Electronic Design Automation, RPTU University Kaiserslautern-Landau
-// File created on 09/21/2025 by Tharindu Samarakoon (gug75kex@rptu.de)
-// File updated on 10/29/2025 by Tobias Jauch (tobias.jauch@rptu.de)
 
 package Assignment02
 
@@ -41,7 +52,7 @@ class ALU extends Module {
   // =============================================================================
   // TDD CYCLE 1: ADD Operation Implementation
   // =============================================================================
-  switch(io.operation) {
+  @@switch(io.operation) {
     is(ALUOp.ADD) {
       // Addition with wraparound (modulo 2^32)
       io.aluResult := io.operandA + io.operandB
@@ -88,34 +99,51 @@ class ALU extends Module {
       // Shift Right Logical - use only lower 5 bits of operandB
       io.aluResult := io.operandA >> io.operandB(4, 0)
     }
-    // =============================================================================
-    // TDD CYCLE 8: SRA (Shift Right Arithmetic) Operation Implementation
-    // =============================================================================
-    is(ALUOp.SRA) {
-      // Shift Right Arithmetic - treat operandA as signed
-      io.aluResult := (io.operandA.asSInt >> io.operandB(4, 0)).asUInt
-    }
-    // =============================================================================
-    // TDD CYCLE 9: SLT (Set Less Than - Signed) Operation Implementation
-    // =============================================================================
-    is(ALUOp.SLT) {
-      // Set Less Than - signed comparison
-      io.aluResult := Mux(io.operandA.asSInt < io.operandB.asSInt, 1.U, 0.U)
-    }
-    // =============================================================================
-    // TDD CYCLE 10: SLTU (Set Less Than Unsigned) Operation Implementation
-    // =============================================================================
-    is(ALUOp.SLTU) {
-      // Set Less Than Unsigned
-      io.aluResult := Mux(io.operandA < io.operandB, 1.U, 0.U)
-    }
-    // =============================================================================
-    // TDD CYCLE 11: PASSB (Pass operandB) Operation Implementation
-    // =============================================================================
-    is(ALUOp.PASSB) {
-      // Pass operandB to output
-      io.aluResult := io.operandB
-    }
   }
 
 }
+```
+
+
+presentation compiler configuration:
+Scala version: 2.13.18
+Classpath:
+<HOME>/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.18/scala-library-2.13.18.jar [exists ]
+Options:
+
+
+
+
+
+#### Error stacktrace:
+
+```
+scala.collection.StringOps$.head$extension(StringOps.scala:1124)
+	scala.meta.internal.metals.ClassfileComparator.compare(ClassfileComparator.scala:30)
+	scala.meta.internal.metals.ClassfileComparator.compare(ClassfileComparator.scala:3)
+	java.base/java.util.PriorityQueue.siftUpUsingComparator(PriorityQueue.java:660)
+	java.base/java.util.PriorityQueue.siftUp(PriorityQueue.java:637)
+	java.base/java.util.PriorityQueue.offer(PriorityQueue.java:330)
+	java.base/java.util.PriorityQueue.add(PriorityQueue.java:311)
+	scala.meta.internal.metals.ClasspathSearch.$anonfun$search$3(ClasspathSearch.scala:32)
+	scala.meta.internal.metals.ClasspathSearch.$anonfun$search$3$adapted(ClasspathSearch.scala:26)
+	scala.collection.IterableOnceOps.foreach(IterableOnce.scala:630)
+	scala.collection.IterableOnceOps.foreach$(IterableOnce.scala:628)
+	scala.collection.AbstractIterator.foreach(Iterator.scala:1313)
+	scala.meta.internal.metals.ClasspathSearch.search(ClasspathSearch.scala:26)
+	scala.meta.internal.metals.WorkspaceSymbolProvider.search(WorkspaceSymbolProvider.scala:107)
+	scala.meta.internal.metals.MetalsSymbolSearch.search$1(MetalsSymbolSearch.scala:114)
+	scala.meta.internal.metals.MetalsSymbolSearch.search(MetalsSymbolSearch.scala:118)
+	scala.meta.internal.pc.AutoImportsProvider.autoImports(AutoImportsProvider.scala:58)
+	scala.meta.internal.pc.ScalaPresentationCompiler.$anonfun$autoImports$1(ScalaPresentationCompiler.scala:399)
+	scala.meta.internal.pc.CompilerAccess.withSharedCompiler(CompilerAccess.scala:148)
+	scala.meta.internal.pc.CompilerAccess.$anonfun$withInterruptableCompiler$1(CompilerAccess.scala:92)
+	scala.meta.internal.pc.CompilerAccess.$anonfun$onCompilerJobQueue$1(CompilerAccess.scala:209)
+	scala.meta.internal.pc.CompilerJobQueue$Job.run(CompilerJobQueue.scala:152)
+	java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	java.base/java.lang.Thread.run(Thread.java:840)
+```
+#### Short summary: 
+
+java.util.NoSuchElementException: head of empty String

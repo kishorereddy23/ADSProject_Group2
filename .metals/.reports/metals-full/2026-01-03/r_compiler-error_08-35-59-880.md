@@ -1,10 +1,22 @@
+error id: 2231967A81E4FA8A9DD04E7BCC30AB2E
+file://<WORKSPACE>/02_ALU/src/test/scala/alu_tb.scala
+### java.util.NoSuchElementException: head of empty String
+
+occurred in the presentation compiler.
+
+
+
+action parameters:
+offset: 157
+uri: file://<WORKSPACE>/02_ALU/src/test/scala/alu_tb.scala
+text:
+```scala
 // ADS I Class Project
 // Assignment 02: Arithmetic Logic Unit and UVM Testbench
 //
 // Chair of Electronic Design Automation, RPTU in Kaiserslautern
-// File created on 10/31/2025 by Tobias Jauch (tobias.jauch@rptu.de)
 
-import chisel3._
+import @@chisel3._
 import chiseltest._
 import org.scalatest.flatspec.AnyFlatSpec
 import Assignment02._
@@ -52,103 +64,6 @@ class ALUAddTest extends AnyFlatSpec with ChiselScalatestTester {
       dut.io.operandB.poke("hFFFFFFFF".U)
       dut.io.operation.poke(ALUOp.ADD)
       dut.io.aluResult.expect("hFFFFFFFE".U)
-      dut.clock.step(1)
-    }
-  }
-}
-
-// =============================================================================
-// TDD CYCLE 11: PASSB (Pass operandB) Operation
-// =============================================================================
-
-// Test PASSB operation
-class ALUPassbTest extends AnyFlatSpec with ChiselScalatestTester {
-  "ALU_Passb_Tester" should "test PASSB operation" in {
-    test(new ALU).withAnnotations(Seq(WriteVcdAnnotation)) { dut =>
-      dut.clock.setTimeout(0)
-
-      // Test Case 1: Pass various values
-      dut.io.operandA.poke(100.U)
-      dut.io.operandB.poke(200.U)
-      dut.io.operation.poke(ALUOp.PASSB)
-      dut.io.aluResult.expect(200.U)
-      dut.clock.step(1)
-
-      // Test Case 2: Pass zero
-      dut.io.operandA.poke("hFFFFFFFF".U)
-      dut.io.operandB.poke(0.U)
-      dut.io.operation.poke(ALUOp.PASSB)
-      dut.io.aluResult.expect(0.U)
-      dut.clock.step(1)
-
-      // Test Case 3: Pass max value
-      dut.io.operandA.poke(0.U)
-      dut.io.operandB.poke("hFFFFFFFF".U)
-      dut.io.operation.poke(ALUOp.PASSB)
-      dut.io.aluResult.expect("hFFFFFFFF".U)
-      dut.clock.step(1)
-
-      // Test Case 4: operandA should not affect result
-      dut.io.operandA.poke("h12345678".U)
-      dut.io.operandB.poke("hABCDEF00".U)
-      dut.io.operation.poke(ALUOp.PASSB)
-      dut.io.aluResult.expect("hABCDEF00".U)
-      dut.clock.step(1)
-    }
-  }
-}
-
-// =============================================================================
-// TDD CYCLE 10: SLTU (Set Less Than Unsigned) Operation
-// =============================================================================
-
-// Test SLTU operation
-class ALUSltuTest extends AnyFlatSpec with ChiselScalatestTester {
-  "ALU_Sltu_Tester" should "test SLTU operation" in {
-    test(new ALU).withAnnotations(Seq(WriteVcdAnnotation)) { dut =>
-      dut.clock.setTimeout(0)
-
-      // Test Case 1: Basic unsigned comparison (true)
-      dut.io.operandA.poke(10.U)
-      dut.io.operandB.poke(20.U)
-      dut.io.operation.poke(ALUOp.SLTU)
-      dut.io.aluResult.expect(1.U)
-      dut.clock.step(1)
-
-      // Test Case 2: Basic unsigned comparison (false)
-      dut.io.operandA.poke(20.U)
-      dut.io.operandB.poke(10.U)
-      dut.io.operation.poke(ALUOp.SLTU)
-      dut.io.aluResult.expect(0.U)
-      dut.clock.step(1)
-
-      // Test Case 3: Equal values (false)
-      dut.io.operandA.poke(10.U)
-      dut.io.operandB.poke(10.U)
-      dut.io.operation.poke(ALUOp.SLTU)
-      dut.io.aluResult.expect(0.U)
-      dut.clock.step(1)
-
-      // Test Case 4: Small < Large unsigned (true)
-      // Unlike SLT, 1 < 0xFFFFFFFF is TRUE in unsigned
-      dut.io.operandA.poke(1.U)
-      dut.io.operandB.poke("hFFFFFFFF".U)
-      dut.io.operation.poke(ALUOp.SLTU)
-      dut.io.aluResult.expect(1.U)
-      dut.clock.step(1)
-
-      // Test Case 5: Large < Small unsigned (false)
-      dut.io.operandA.poke("hFFFFFFFF".U)
-      dut.io.operandB.poke(1.U)
-      dut.io.operation.poke(ALUOp.SLTU)
-      dut.io.aluResult.expect(0.U)
-      dut.clock.step(1)
-
-      // Test Case 6: Zero comparison
-      dut.io.operandA.poke(0.U)
-      dut.io.operandB.poke(1.U)
-      dut.io.operation.poke(ALUOp.SLTU)
-      dut.io.aluResult.expect(1.U)
       dut.clock.step(1)
     }
   }
@@ -523,3 +438,48 @@ class ALUSubTest extends AnyFlatSpec with ChiselScalatestTester {
     }
   }
 }
+```
+
+
+presentation compiler configuration:
+Scala version: 2.13.18
+Classpath:
+<HOME>/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.18/scala-library-2.13.18.jar [exists ]
+Options:
+
+
+
+
+
+#### Error stacktrace:
+
+```
+scala.collection.StringOps$.head$extension(StringOps.scala:1124)
+	scala.meta.internal.metals.ClassfileComparator.compare(ClassfileComparator.scala:30)
+	scala.meta.internal.metals.ClassfileComparator.compare(ClassfileComparator.scala:3)
+	java.base/java.util.PriorityQueue.siftUpUsingComparator(PriorityQueue.java:660)
+	java.base/java.util.PriorityQueue.siftUp(PriorityQueue.java:637)
+	java.base/java.util.PriorityQueue.offer(PriorityQueue.java:330)
+	java.base/java.util.PriorityQueue.add(PriorityQueue.java:311)
+	scala.meta.internal.metals.ClasspathSearch.$anonfun$search$3(ClasspathSearch.scala:32)
+	scala.meta.internal.metals.ClasspathSearch.$anonfun$search$3$adapted(ClasspathSearch.scala:26)
+	scala.collection.IterableOnceOps.foreach(IterableOnce.scala:630)
+	scala.collection.IterableOnceOps.foreach$(IterableOnce.scala:628)
+	scala.collection.AbstractIterator.foreach(Iterator.scala:1313)
+	scala.meta.internal.metals.ClasspathSearch.search(ClasspathSearch.scala:26)
+	scala.meta.internal.metals.WorkspaceSymbolProvider.search(WorkspaceSymbolProvider.scala:107)
+	scala.meta.internal.metals.MetalsSymbolSearch.search$1(MetalsSymbolSearch.scala:114)
+	scala.meta.internal.metals.MetalsSymbolSearch.search(MetalsSymbolSearch.scala:118)
+	scala.meta.internal.pc.AutoImportsProvider.autoImports(AutoImportsProvider.scala:58)
+	scala.meta.internal.pc.ScalaPresentationCompiler.$anonfun$autoImports$1(ScalaPresentationCompiler.scala:399)
+	scala.meta.internal.pc.CompilerAccess.withSharedCompiler(CompilerAccess.scala:148)
+	scala.meta.internal.pc.CompilerAccess.$anonfun$withInterruptableCompiler$1(CompilerAccess.scala:92)
+	scala.meta.internal.pc.CompilerAccess.$anonfun$onCompilerJobQueue$1(CompilerAccess.scala:209)
+	scala.meta.internal.pc.CompilerJobQueue$Job.run(CompilerJobQueue.scala:152)
+	java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	java.base/java.lang.Thread.run(Thread.java:840)
+```
+#### Short summary: 
+
+java.util.NoSuchElementException: head of empty String

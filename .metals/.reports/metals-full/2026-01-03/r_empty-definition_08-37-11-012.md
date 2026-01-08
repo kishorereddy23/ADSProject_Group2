@@ -1,9 +1,21 @@
+error id: file://<WORKSPACE>/02_ALU/src/main/scala/ALU.scala:local16
+file://<WORKSPACE>/02_ALU/src/main/scala/ALU.scala
+empty definition using pc, found symbol in pc: 
+empty definition using semanticdb
+empty definition using fallback
+non-local guesses:
+	 -chisel3/Bundle#
+	 -chisel3/util/Bundle#
+	 -Bundle#
+	 -scala/Predef.Bundle#
+offset: 681
+uri: file://<WORKSPACE>/02_ALU/src/main/scala/ALU.scala
+text:
+```scala
 // ADS I Class Project
 // Assignment 02: Arithmetic Logic Unit and UVM Testbench
 //
 // Chair of Electronic Design Automation, RPTU University Kaiserslautern-Landau
-// File created on 09/21/2025 by Tharindu Samarakoon (gug75kex@rptu.de)
-// File updated on 10/29/2025 by Tobias Jauch (tobias.jauch@rptu.de)
 
 package Assignment02
 
@@ -28,7 +40,7 @@ object ALUOp extends ChiselEnum {
 
 class ALU extends Module {
   
-  val io = IO(new Bundle {
+  val io = IO(new @@Bundle {
     val operandA  = Input(UInt(32.W))
     val operandB  = Input(UInt(32.W))
     val operation = Input(ALUOp())
@@ -102,20 +114,12 @@ class ALU extends Module {
       // Set Less Than - signed comparison
       io.aluResult := Mux(io.operandA.asSInt < io.operandB.asSInt, 1.U, 0.U)
     }
-    // =============================================================================
-    // TDD CYCLE 10: SLTU (Set Less Than Unsigned) Operation Implementation
-    // =============================================================================
-    is(ALUOp.SLTU) {
-      // Set Less Than Unsigned
-      io.aluResult := Mux(io.operandA < io.operandB, 1.U, 0.U)
-    }
-    // =============================================================================
-    // TDD CYCLE 11: PASSB (Pass operandB) Operation Implementation
-    // =============================================================================
-    is(ALUOp.PASSB) {
-      // Pass operandB to output
-      io.aluResult := io.operandB
-    }
   }
 
 }
+```
+
+
+#### Short summary: 
+
+empty definition using pc, found symbol in pc: 
