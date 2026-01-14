@@ -1,0 +1,17 @@
+0.7
+2020.2
+May 22 2024
+19:03:11
+D:/02_ALU/generated-src/ALU.v,1767964519,systemVerilog,D:/02_ALU/src/test/uvm/alu_if.sv;D:/02_ALU/src/test/uvm/alu_tb.sv,D:/02_ALU/src/test/uvm/alu_tb_config_pkg.sv,,$unit_ALU_v_2755002690;ALU,,uvm,,SIM_TIMEOUT=50000,,,,
+D:/02_ALU/src/test/uvm/alu_agent.sv,1767875160,systemVerilog,,D:/02_ALU/src/test/uvm/alu_scoreboard.sv,D:/Vivado/2024.1/data/xsim/system_verilog/uvm_include/uvm_macros.svh,,,uvm,,SIM_TIMEOUT=50000,,,,
+D:/02_ALU/src/test/uvm/alu_driver.sv,1767875160,systemVerilog,,D:/02_ALU/src/test/uvm/alu_monitor.sv,D:/Vivado/2024.1/data/xsim/system_verilog/uvm_include/uvm_macros.svh,,,uvm,,SIM_TIMEOUT=50000,,,,
+D:/02_ALU/src/test/uvm/alu_env.sv,1767875160,systemVerilog,,D:/02_ALU/src/test/uvm/alu_test.sv,D:/Vivado/2024.1/data/xsim/system_verilog/uvm_include/uvm_macros.svh,,,uvm,,SIM_TIMEOUT=50000,,,,
+D:/02_ALU/src/test/uvm/alu_if.sv,1767875160,systemVerilog,,D:/02_ALU/src/test/uvm/alu_seq_item.sv,,alu_if,,uvm,,SIM_TIMEOUT=50000,,,,
+D:/02_ALU/src/test/uvm/alu_monitor.sv,1767875160,systemVerilog,,D:/02_ALU/src/test/uvm/alu_agent.sv,D:/Vivado/2024.1/data/xsim/system_verilog/uvm_include/uvm_macros.svh,,,uvm,,SIM_TIMEOUT=50000,,,,
+D:/02_ALU/src/test/uvm/alu_scoreboard.sv,1767875160,systemVerilog,,D:/02_ALU/src/test/uvm/alu_env.sv,D:/Vivado/2024.1/data/xsim/system_verilog/uvm_include/uvm_macros.svh,,,uvm,,SIM_TIMEOUT=50000,,,,
+D:/02_ALU/src/test/uvm/alu_seq_item.sv,1768379127,systemVerilog,,D:/02_ALU/src/test/uvm/alu_sequence.sv,D:/Vivado/2024.1/data/xsim/system_verilog/uvm_include/uvm_macros.svh,,,uvm,,SIM_TIMEOUT=50000,,,,
+D:/02_ALU/src/test/uvm/alu_sequence.sv,1767875160,systemVerilog,,D:/02_ALU/src/test/uvm/alu_driver.sv,D:/Vivado/2024.1/data/xsim/system_verilog/uvm_include/uvm_macros.svh,,,uvm,,SIM_TIMEOUT=50000,,,,
+D:/02_ALU/src/test/uvm/alu_tb.sv,1767875160,systemVerilog,,,D:/Vivado/2024.1/data/xsim/system_verilog/uvm_include/uvm_macros.svh,alu_tb,,uvm,,SIM_TIMEOUT=50000,,,,
+D:/02_ALU/src/test/uvm/alu_tb_config_pkg.sv,1767875160,systemVerilog,D:/02_ALU/generated-src/ALU.v,D:/02_ALU/src/test/uvm/alu_if.sv,,alu_tb_config_pkg,,uvm,,SIM_TIMEOUT=50000,,,,
+D:/02_ALU/src/test/uvm/alu_test.sv,1768378019,systemVerilog,,D:/02_ALU/src/test/uvm/alu_tb.sv,,,,uvm,,SIM_TIMEOUT=50000,,,,
+D:/Vivado/2024.1/data/xsim/system_verilog/uvm_include/uvm_macros.svh,1716425796,verilog,,,,,,,,,,,,

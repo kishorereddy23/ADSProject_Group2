@@ -1,0 +1,22 @@
+Vivado Simulator v2024.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:\Vivado\2024.1\bin\unwrapped\win64.o\xelab.exe alu_tb -relax -s top -timescale 1ns/1ps -debug typical --cov_db_dir ./cov_db --cov_db_name alu_cov 
+Multi-threading is on. Using 10 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 4 for port 'io_operation' [D:/02_ALU/src/test/uvm/alu_tb.sv:33]
+WARNING: [VRFC 10-5021] port 'clock' is not connected on this instance [D:/02_ALU/src/test/uvm/alu_tb.sv:30]
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4468] File : /proj/xbuilds/SWIP/2024.1_0404_1523/installs/lin64/Vivado/2024.1/data/system_verilog/uvm_1.2/xlnx_uvm_package.sv, Line : 25994, RANDC variable size more than 8 bits. This will be treated as a RAND variable instead.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package work.$unit_ALU_v_2755002690
+Compiling package work.alu_tb_config_pkg
+Compiling package uvm.uvm_pkg
+Compiling package std.std
+Compiling module work.alu_if_default
+Compiling module work.ALU
+Compiling module work.alu_tb
+Built simulation snapshot top
