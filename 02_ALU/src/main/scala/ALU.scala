@@ -35,7 +35,7 @@ class ALU extends Module {
     val aluResult = Output(UInt(32.W))
   })
 
-  // Default: output zero (all tests will fail initially)
+  // Default / illegal-op case
   io.aluResult := 0.U
 
   // =============================================================================
@@ -116,6 +116,11 @@ class ALU extends Module {
       // Pass operandB to output
       io.aluResult := io.operandB
     }
+    // Default case: keep output at 0 if operation is illegal
+    .otherwise {
+      io.aluResult := 0.U
+    }
+
   }
 
 }
