@@ -1,0 +1,1 @@
+"alu_tb" -relax -s "top" -timescale "1ns/1ps" -debug "typical" --cov_db_dir "./cov_db" --cov_db_name "alu_cov" 
