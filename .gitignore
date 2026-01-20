@@ -1,5 +1,4 @@
 # CHISEL:
-
 generated-src/
 project/
 target/
@@ -10,5 +9,7 @@ test_run_dir/
 *.json
 *.vcd
 
-# Windows/WSL zone identifier junk
+# VS Code / Metals / OS junk
 **/*Zone.Identifier
+.metals/
+.vscode/
