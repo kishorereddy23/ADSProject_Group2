@@ -1,0 +1,27 @@
+[info] welcome to sbt 1.12.0 (Ubuntu Java 11.0.29)
+[info] loading project definition from /home/kreddy/ADSProject_Group2/03_RV32I-pipeline/project
+[info] loading settings for project root-03_rv32i-pipeline from build.sbt...
+[info] set current project to root-03_rv32i-pipeline (in build file:/home/kreddy/ADSProject_Group2/03_RV32I-pipeline/)
+[info] compiling 1 Scala source to /home/kreddy/ADSProject_Group2/03_RV32I-pipeline/target/scala-2.12/classes ...
+[info] done compiling
+[info] compiling 1 Scala source to /home/kreddy/ADSProject_Group2/03_RV32I-pipeline/target/scala-2.12/classes ...
+[info] done compiling
+ID: instr=0x00000000 opcode=0x00 funct3=0x0 isR= 0 isI= 0 isADD= 0 isADDI= 0 isALU= 0 isNOP= 1 xcptOut= 0
+ID: instr=0x00000000 opcode=0x00 funct3=0x0 isR= 0 isI= 0 isADD= 0 isADDI= 0 isALU= 0 isNOP= 1 xcptOut= 0
+ID: instr=0x00000013 opcode=0x13 funct3=0x0 isR= 0 isI= 1 isADD= 0 isADDI= 1 isALU= 1 isNOP= 0 xcptOut= 0
+ID: instr=0x00400093 opcode=0x13 funct3=0x0 isR= 0 isI= 1 isADD= 0 isADDI= 1 isALU= 1 isNOP= 0 xcptOut= 0
+ID: instr=0x00500113 opcode=0x13 funct3=0x0 isR= 0 isI= 1 isADD= 0 isADDI= 1 isALU= 1 isNOP= 0 xcptOut= 0
+ID: instr=0x00000013 opcode=0x13 funct3=0x0 isR= 0 isI= 1 isADD= 0 isADDI= 1 isALU= 1 isNOP= 0 xcptOut= 0
+[info] PipelinedRISCV32ITest:
+[info] RV32I_BasicTester
+[info] - should work *** FAILED ***
+[info]   io_result=0 (0x0) did not equal expected=4 (0x4) (lines in PipelinedRISCV32I_tb.scala: 17) (PipelinedRISCV32I_tb.scala:24)
+[info] Run completed in 5 seconds, 646 milliseconds.
+[info] Total number of tests run: 1
+[info] Suites: completed 1, aborted 0
+[info] Tests: succeeded 0, failed 1, canceled 0, ignored 0, pending 0
+[info] *** 1 TEST FAILED ***
+[error] Failed tests:
+[error] 	PipelinedRV32I_Tester.PipelinedRISCV32ITest
+[error] (Test / test) sbt.TestsFailedException: Tests unsuccessful
+[error] Total time: 16 s, completed Jan 20, 2026, 11:39:54 AM

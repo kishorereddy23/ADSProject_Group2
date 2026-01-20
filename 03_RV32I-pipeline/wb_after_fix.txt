@@ -1,0 +1,40 @@
+[info] welcome to sbt 1.12.0 (Ubuntu Java 11.0.29)
+[info] loading project definition from /home/kreddy/ADSProject_Group2/03_RV32I-pipeline/project
+[info] loading settings for project root-03_rv32i-pipeline from build.sbt...
+[info] set current project to root-03_rv32i-pipeline (in build file:/home/kreddy/ADSProject_Group2/03_RV32I-pipeline/)
+[info] compiling 16 Scala sources to /home/kreddy/ADSProject_Group2/03_RV32I-pipeline/target/scala-2.12/classes ...
+[info] /home/kreddy/ADSProject_Group2/03_RV32I-pipeline/src/main/scala/WBstage.scala:1:1: 
+[info] Found names but no class, trait or object is defined in the compilation unit.
+[info] The incremental compiler cannot record the dependency information in such case.
+[info] Some errors like unused import referring to a non-existent class might not be reported.
+[info]     
+[info] // ADS I Class Project
+[info] ^
+[info] done compiling
+[info] compiling 1 Scala source to /home/kreddy/ADSProject_Group2/03_RV32I-pipeline/target/scala-2.12/test-classes ...
+[info] done compiling
+WB: inRes=0x00000000 inRD=  0 inExc= 0 | outRes=0x00000000 outRD=  0 outExc= 0
+EX: instrA=0x00000000 instrB=0x00000000 op=io.inALUOp res=0x00000000
+WB: inRes=0x00000000 inRD=  0 inExc= 0 | outRes=0x00000000 outRD=  0 outExc= 0
+EX: instrA=0x00000000 instrB=0x00000000 op=io.inALUOp res=0x00000000
+WB: inRes=0x00000000 inRD=  0 inExc= 0 | outRes=0x00000000 outRD=  0 outExc= 0
+EX: instrA=0x00000000 instrB=0x00000000 op=io.inALUOp res=0x00000000
+WB: inRes=0x00000000 inRD=  0 inExc= 0 | outRes=0x00000000 outRD=  0 outExc= 0
+EX: instrA=0x00000000 instrB=0x00000000 op=io.inALUOp res=0x00000000
+WB: inRes=0x00000000 inRD=  0 inExc= 0 | outRes=0x00000000 outRD=  0 outExc= 0
+EX: instrA=0x00000000 instrB=0x00000004 op=io.inALUOp res=0x00000004
+WB: inRes=0x00000000 inRD=  0 inExc= 0 | outRes=0x00000000 outRD=  0 outExc= 0
+EX: instrA=0x00000000 instrB=0x00000005 op=io.inALUOp res=0x00000005
+[info] PipelinedRISCV32ITest:
+[info] RV32I_BasicTester
+[info] - should work *** FAILED ***
+[info]   io_result=0 (0x0) did not equal expected=4 (0x4) (lines in PipelinedRISCV32I_tb.scala: 17) (PipelinedRISCV32I_tb.scala:24)
+[info] Run completed in 5 seconds, 588 milliseconds.
+[info] Total number of tests run: 1
+[info] Suites: completed 1, aborted 0
+[info] Tests: succeeded 0, failed 1, canceled 0, ignored 0, pending 0
+[info] *** 1 TEST FAILED ***
+[error] Failed tests:
+[error] 	PipelinedRV32I_Tester.PipelinedRISCV32ITest
+[error] (Test / test) sbt.TestsFailedException: Tests unsuccessful
+[error] Total time: 22 s, completed Jan 20, 2026, 11:59:40 AM

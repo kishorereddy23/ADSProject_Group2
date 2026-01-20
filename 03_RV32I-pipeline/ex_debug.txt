@@ -1,0 +1,30 @@
+[info] welcome to sbt 1.12.0 (Ubuntu Java 11.0.29)
+[info] loading project definition from /home/kreddy/ADSProject_Group2/03_RV32I-pipeline/project
+[info] loading settings for project root-03_rv32i-pipeline from build.sbt...
+[info] set current project to root-03_rv32i-pipeline (in build file:/home/kreddy/ADSProject_Group2/03_RV32I-pipeline/)
+[info] compiling 1 Scala source to /home/kreddy/ADSProject_Group2/03_RV32I-pipeline/target/scala-2.12/classes ...
+[info] done compiling
+EX: A=0x00000000 B=0x00000000 op=io.inALUOp res=0x00000000
+EX: A=0x00000000 B=0x00000000 op=io.inALUOp res=0x00000000
+EX: A=0x00000000 B=0x00000000 op=io.inALUOp res=0x00000000
+EX: A=0x00000000 B=0x00000004 op=io.inALUOp res=0x00000004
+EX: A=0x00000000 B=0x00000005 op=io.inALUOp res=0x00000005
+EX: A=0x00000000 B=0x00000000 op=io.inALUOp res=0x00000000
+EX: A=0x00000000 B=0x00000000 op=io.inALUOp res=0x00000000
+EX: A=0x00000000 B=0x00000000 op=io.inALUOp res=0x00000000
+EX: A=0x00000004 B=0x00000000 op=io.inALUOp res=0x00000004
+EX: A=0x00000000 B=0x000007ff op=io.inALUOp res=0x000007ff
+EX: A=0x00000000 B=0x00000010 op=io.inALUOp res=0x00000010
+[info] PipelinedRISCV32ITest:
+[info] RV32I_BasicTester
+[info] - should work *** FAILED ***
+[info]   io_result=4 (0x4) did not equal expected=9 (0x9) (lines in PipelinedRISCV32I_tb.scala: 17) (PipelinedRISCV32I_tb.scala:39)
+[info] Run completed in 6 seconds, 35 milliseconds.
+[info] Total number of tests run: 1
+[info] Suites: completed 1, aborted 0
+[info] Tests: succeeded 0, failed 1, canceled 0, ignored 0, pending 0
+[info] *** 1 TEST FAILED ***
+[error] Failed tests:
+[error] 	PipelinedRV32I_Tester.PipelinedRISCV32ITest
+[error] (Test / test) sbt.TestsFailedException: Tests unsuccessful
+[error] Total time: 13 s, completed Jan 20, 2026, 6:48:23 PM

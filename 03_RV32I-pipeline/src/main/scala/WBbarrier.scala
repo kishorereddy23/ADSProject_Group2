@@ -1,35 +1,33 @@
-// ADS I Class Project
-// Pipelined RISC-V Core - WB Barrier
-//
-// Chair of Electronic Design Automation, RPTU in Kaiserslautern
-// File created on 01/09/2026 by Tobias Jauch (@tojauch)
-
-/*
-WB-Barrier: final pipeline register after Writeback stage
-
-Internal Registers:
-    check_res: final result value for verification, initialized to 0
-    isInvalid: invalid instruction flag, initialized to false
-
-Inputs:
-    inCheckRes: result from WB stage
-    inXcptInvalid: exception flag from MEM barrier
-
-Outputs:
-    outCheckRes: final result for external observation
-    outXcptInvalid: final exception flag (tied to invalid instruction in ID stage)
-
-Functionality:
-    Save all input signals to a register and output them in the following clock cycle
-    Enable result observation without pipeline disruption (for result and exception signals)
-*/
-
 package core_tile
 
 import chisel3._
 
-// -----------------------------------------
-// WB-Barrier
-// -----------------------------------------
+class WBbarrier extends Module {
+  val io = IO(new Bundle {
+    val inAluResult = Input(UInt(32.W))
+    val inRD        = Input(UInt(5.W))
+    val inException = Input(Bool())
 
-//ToDo: Add your implementation according to the specification above here 
+    val outAluResult = Output(UInt(32.W))
+    val outRD        = Output(UInt(5.W))
+    val outException = Output(Bool())
+  })
+
+  val aluReg = RegInit(0.U(32.W))
+  val rdReg  = RegInit(0.U(5.W))
+  val excReg = RegInit(false.B)
+
+  aluReg := io.inAluResult
+  rdReg  := io.inRD
+  excReg := io.inException
+
+  io.outAluResult := aluReg
+  io.outRD        := rdReg
+  io.outException := excReg
+
+  when (true.B) {
+  printf(p"WB: inRes=0x${Hexadecimal(io.inAluResult)} outRes=0x${Hexadecimal(io.outAluResult)} " +
+         p"inRD=${io.inRD} outRD=${io.outRD}\n")
+}
+
+}

@@ -1,43 +1,34 @@
-// ADS I Class Project
-// Pipelined RISC-V Core - EX Stage
-//
-// Chair of Electronic Design Automation, RPTU in Kaiserslautern
-// File created on 01/09/2026 by Tobias Jauch (@tojauch)
-
-/*
-Instruction Execute (EX) Stage: ALU operations and exception detection
-
-Instantiated Modules:
-    ALU: Integrate your module from Assignment02 for arithmetic/logical operations
-
-ALU Interface:
-    alu.io.operandA: first operand input
-    alu.io.operandB: second operand input
-    alu.io.operation: operation code controlling ALU function
-    alu.io.aluResult: computation result output
-
-Internal Signals:
-    Map uopc codes to ALUOp values
-
-Functionality:
-    Map instruction uop to ALU operation code
-    Pass operands to ALU
-    Output results to pipeline
-
-Outputs:
-    aluResult: computation result from ALU
-    exception: pass exception flag
-*/
-
 package core_tile
 
 import chisel3._
 import chisel3.util._
-import Assignment02.{ALU, ALUOp}
 import uopc._
+import Assignment02.{ALU, ALUOp}
 
-// -----------------------------------------
-// Execute Stage
-// -----------------------------------------
+class EXstage extends Module {
+  val io = IO(new Bundle {
+    val inUOP      = Input(uopc())
+    val inOperandA = Input(UInt(32.W))
+    val inOperandB = Input(UInt(32.W))
+    val inALUOp    = Input(ALUOp())
 
-//ToDo: Add your implementation according to the specification above here 
+    val outUOP       = Output(uopc())
+    val outAluResult = Output(UInt(32.W))
+  })
+
+  val alu = Module(new ALU())
+
+  alu.io.operandA := io.inOperandA
+  alu.io.operandB := io.inOperandB
+  alu.io.operation := io.inALUOp
+
+  io.outUOP       := io.inUOP
+  io.outAluResult := alu.io.aluResult
+
+ when (true.B) {
+  printf(p"EX: A=0x${Hexadecimal(io.inOperandA)} B=0x${Hexadecimal(io.inOperandB)}\n")
+}
+
+
+
+}

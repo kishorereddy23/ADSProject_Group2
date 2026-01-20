@@ -1,30 +1,30 @@
-// ADS I Class Project
-// Pipelined RISC-V Core - Common Definitions
-//
-// Chair of Electronic Design Automation, RPTU in Kaiserslautern
-// File created on 01/09/2026 by Tobias Jauch (@tojauch)
-
-/*
-Global Definitions and Data Types
-
-Enumerations:
-    uopc: ChiselEnum defining micro-operation codes for all supported RV32I instructions:
-        R-type instructions 
-        I-type instructions
-        NOP (no operation, default case)
-
-This enum is used throughout the pipeline:
-    Decode stage assigns uop based on instruction fields
-    Execute stage maps uop to ALU operations
-*/
-
 package core_tile
 
 import chisel3._
+import chisel3.util._
 import chisel3.experimental.ChiselEnum
 
-// -----------------------------------------
-// Global Definitions and Data Types
-// -----------------------------------------
+// Micro-op codes for the pipeline
+object uopc extends ChiselEnum {
+  val NOP = Value(0.U)
+  val ALU = Value(1.U)
 
-//ToDo: Add your implementation according to the specification above here 
+  // Some basic RV32I decode constants (subset: R-type and I-type ALU)
+  object RV32I {
+    val OPCODE_OP     = "b0110011".U(7.W) // R-type
+    val OPCODE_OP_IMM = "b0010011".U(7.W) // I-type (ADDI, ANDI, ORI, XORI, SLTI, SLTIU, SLLI, SRLI, SRAI)
+
+    // funct3 values (same for R and I; R adds funct7)
+    val FUNCT3_ADD_SUB  = "b000".U(3.W)
+    val FUNCT3_SLL      = "b001".U(3.W)
+    val FUNCT3_SLT      = "b010".U(3.W)
+    val FUNCT3_SLTU     = "b011".U(3.W)
+    val FUNCT3_XOR      = "b100".U(3.W)
+    val FUNCT3_SRL_SRA  = "b101".U(3.W)
+    val FUNCT3_OR       = "b110".U(3.W)
+    val FUNCT3_AND      = "b111".U(3.W)
+
+    val FUNCT7_ADD_SRL  = "b0000000".U(7.W)
+    val FUNCT7_SUB_SRA  = "b0100000".U(7.W)
+  }
+}

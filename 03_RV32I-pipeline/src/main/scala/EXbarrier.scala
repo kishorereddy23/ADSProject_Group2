@@ -1,38 +1,39 @@
-// ADS I Class Project
-// Pipelined RISC-V Core - EX Barrier
-//
-// Chair of Electronic Design Automation, RPTU in Kaiserslautern
-// File created on 01/09/2026 by Tobias Jauch (@tojauch)
-
-/*
-EX-Barrier: pipeline register between Execute and Memory stages
-
-Internal Registers:
-    aluResult: ALU computation result
-    rd: destination register index
-    exception: exception flag
-
-Inputs:
-    inAluResult: computation result from EX stage
-    inRD: destination register from EX stage
-    inXcptInvalid: exception flag from EX stage
-
-Outputs:
-    outAluResult: result to MEM stage
-    outRD: destination register to MEM stage
-    outXcptInvalid: exception flag to MEM stage
-
-Functionality:
-    Save all input signals to a register and output them in the following clock cycle
-*/
-
 package core_tile
 
 import chisel3._
+import uopc._
 
-// -----------------------------------------
-// EX-Barrier
-// -----------------------------------------
+class EXbarrier extends Module {
+  val io = IO(new Bundle {
+    val inUOP      = Input(uopc())
+    val inRD       = Input(UInt(5.W))
+    val inAluValue = Input(UInt(32.W))
+    val inXcpt     = Input(Bool())
 
-//ToDo: Add your implementation according to the specification above here 
+    val outUOP      = Output(uopc())
+    val outRD       = Output(UInt(5.W))
+    val outAluValue = Output(UInt(32.W))
+    val outXcpt     = Output(Bool())
+  })
 
+  val uopReg = RegInit(uopc.NOP)
+  val rdReg  = RegInit(0.U(5.W))
+  val aluReg = RegInit(0.U(32.W))
+  val excReg = RegInit(false.B)
+
+  uopReg := io.inUOP
+  rdReg  := io.inRD
+  aluReg := io.inAluValue
+  excReg := io.inXcpt
+
+  io.outUOP      := uopReg
+  io.outRD       := rdReg
+  io.outAluValue := aluReg
+  io.outXcpt     := excReg
+
+  when (true.B) {
+  printf(p"EXB: inVal=0x${Hexadecimal(io.inAluValue)} outVal=0x${Hexadecimal(io.outAluValue)} " +
+         p"inRD=${io.inRD} outRD=${io.outRD}\n")
+}
+
+}

@@ -1,0 +1,85 @@
+[info] welcome to sbt 1.12.0 (Ubuntu Java 11.0.29)
+[info] loading project definition from /home/kreddy/ADSProject_Group2/03_RV32I-pipeline/project
+[info] loading settings for project root-03_rv32i-pipeline from build.sbt...
+[info] set current project to root-03_rv32i-pipeline (in build file:/home/kreddy/ADSProject_Group2/03_RV32I-pipeline/)
+[info] compiling 5 Scala sources to /home/kreddy/ADSProject_Group2/03_RV32I-pipeline/target/scala-2.12/classes ...
+[info] done compiling
+WB: inRes=0x00000000 outRes=0x00000000 inRD=  0 outRD=  0
+MEMB: inVal=0x00000000 outVal=0x00000000 inRD=  0 outRD=  0
+EXB: inVal=0x00000000 outVal=0x00000000 inRD=  0 outRD=  0
+EX: A=0x00000000 B=0x00000000 op=io.inALUOp res=0x00000000
+IDB: rdIn=  0 rdOut=  0 A=0x00000000 B=0x00000000
+ID: instr=0x00000000 rd=  0 rs1=  0 rs2=  0 A=0x00000000 B=0x00000000 uop=io.outUOP rdOut=  0
+WB: inRes=0x00000000 outRes=0x00000000 inRD=  0 outRD=  0
+MEMB: inVal=0x00000000 outVal=0x00000000 inRD=  0 outRD=  0
+EXB: inVal=0x00000000 outVal=0x00000000 inRD=  0 outRD=  0
+EX: A=0x00000000 B=0x00000000 op=io.inALUOp res=0x00000000
+IDB: rdIn=  0 rdOut=  0 A=0x00000000 B=0x00000000
+ID: instr=0x00000013 rd=  0 rs1=  0 rs2=  0 A=0x00000000 B=0x00000000 uop=io.outUOP rdOut=  0
+WB: inRes=0x00000000 outRes=0x00000000 inRD=  0 outRD=  0
+MEMB: inVal=0x00000000 outVal=0x00000000 inRD=  0 outRD=  0
+EXB: inVal=0x00000000 outVal=0x00000000 inRD=  0 outRD=  0
+EX: A=0x00000000 B=0x00000000 op=io.inALUOp res=0x00000000
+IDB: rdIn=  1 rdOut=  0 A=0x00000000 B=0x00000000
+ID: instr=0x00400093 rd=  1 rs1=  0 rs2=  4 A=0x00000000 B=0x00000004 uop=io.outUOP rdOut=  1
+WB: inRes=0x00000000 outRes=0x00000000 inRD=  0 outRD=  0
+MEMB: inVal=0x00000000 outVal=0x00000000 inRD=  0 outRD=  0
+EXB: inVal=0x00000004 outVal=0x00000000 inRD=  1 outRD=  0
+EX: A=0x00000000 B=0x00000004 op=io.inALUOp res=0x00000004
+IDB: rdIn=  2 rdOut=  1 A=0x00000000 B=0x00000004
+ID: instr=0x00500113 rd=  2 rs1=  0 rs2=  5 A=0x00000000 B=0x00000005 uop=io.outUOP rdOut=  2
+WB: inRes=0x00000000 outRes=0x00000000 inRD=  0 outRD=  0
+MEMB: inVal=0x00000004 outVal=0x00000000 inRD=  1 outRD=  0
+EXB: inVal=0x00000005 outVal=0x00000004 inRD=  2 outRD=  1
+EX: A=0x00000000 B=0x00000005 op=io.inALUOp res=0x00000005
+IDB: rdIn=  0 rdOut=  2 A=0x00000000 B=0x00000005
+ID: instr=0x00000013 rd=  0 rs1=  0 rs2=  0 A=0x00000000 B=0x00000000 uop=io.outUOP rdOut=  0
+WB: inRes=0x00000004 outRes=0x00000000 inRD=  1 outRD=  0
+MEMB: inVal=0x00000005 outVal=0x00000004 inRD=  2 outRD=  1
+EXB: inVal=0x00000000 outVal=0x00000005 inRD=  0 outRD=  2
+EX: A=0x00000000 B=0x00000000 op=io.inALUOp res=0x00000000
+IDB: rdIn=  0 rdOut=  0 A=0x00000000 B=0x00000000
+ID: instr=0x00000013 rd=  0 rs1=  0 rs2=  0 A=0x00000000 B=0x00000000 uop=io.outUOP rdOut=  0
+WB: inRes=0x00000005 outRes=0x00000004 inRD=  2 outRD=  1
+MEMB: inVal=0x00000000 outVal=0x00000005 inRD=  0 outRD=  2
+EXB: inVal=0x00000000 outVal=0x00000000 inRD=  0 outRD=  0
+EX: A=0x00000000 B=0x00000000 op=io.inALUOp res=0x00000000
+IDB: rdIn=  0 rdOut=  0 A=0x00000000 B=0x00000000
+ID: instr=0x00000013 rd=  0 rs1=  0 rs2=  0 A=0x00000000 B=0x00000000 uop=io.outUOP rdOut=  0
+WB: inRes=0x00000000 outRes=0x00000005 inRD=  0 outRD=  2
+MEMB: inVal=0x00000000 outVal=0x00000000 inRD=  0 outRD=  0
+EXB: inVal=0x00000000 outVal=0x00000000 inRD=  0 outRD=  0
+EX: A=0x00000000 B=0x00000000 op=io.inALUOp res=0x00000000
+IDB: rdIn=  3 rdOut=  0 A=0x00000000 B=0x00000000
+ID: instr=0x002081b3 rd=  3 rs1=  1 rs2=  2 A=0x00000004 B=0x00000000 uop=io.outUOP rdOut=  3
+WB: inRes=0x00000000 outRes=0x00000000 inRD=  0 outRD=  0
+MEMB: inVal=0x00000000 outVal=0x00000000 inRD=  0 outRD=  0
+EXB: inVal=0x00000004 outVal=0x00000000 inRD=  3 outRD=  0
+EX: A=0x00000004 B=0x00000000 op=io.inALUOp res=0x00000004
+IDB: rdIn=  4 rdOut=  3 A=0x00000004 B=0x00000000
+ID: instr=0x7ff00213 rd=  4 rs1=  0 rs2= 31 A=0x00000000 B=0x000007ff uop=io.outUOP rdOut=  4
+WB: inRes=0x00000000 outRes=0x00000000 inRD=  0 outRD=  0
+MEMB: inVal=0x00000004 outVal=0x00000000 inRD=  3 outRD=  0
+EXB: inVal=0x000007ff outVal=0x00000004 inRD=  4 outRD=  3
+EX: A=0x00000000 B=0x000007ff op=io.inALUOp res=0x000007ff
+IDB: rdIn=  5 rdOut=  4 A=0x00000000 B=0x000007ff
+ID: instr=0x01000293 rd=  5 rs1=  0 rs2= 16 A=0x00000000 B=0x00000010 uop=io.outUOP rdOut=  5
+WB: inRes=0x00000004 outRes=0x00000000 inRD=  3 outRD=  0
+MEMB: inVal=0x000007ff outVal=0x00000004 inRD=  4 outRD=  3
+EXB: inVal=0x00000010 outVal=0x000007ff inRD=  5 outRD=  4
+EX: A=0x00000000 B=0x00000010 op=io.inALUOp res=0x00000010
+IDB: rdIn=  0 rdOut=  5 A=0x00000000 B=0x00000010
+ID: instr=0x00000013 rd=  0 rs1=  0 rs2=  0 A=0x00000000 B=0x00000000 uop=io.outUOP rdOut=  0
+[info] PipelinedRISCV32ITest:
+[info] RV32I_BasicTester
+[info] - should work *** FAILED ***
+[info]   io_result=4 (0x4) did not equal expected=9 (0x9) (lines in PipelinedRISCV32I_tb.scala: 17) (PipelinedRISCV32I_tb.scala:39)
+[info] Run completed in 5 seconds, 646 milliseconds.
+[info] Total number of tests run: 1
+[info] Suites: completed 1, aborted 0
+[info] Tests: succeeded 0, failed 1, canceled 0, ignored 0, pending 0
+[info] *** 1 TEST FAILED ***
+[error] Failed tests:
+[error] 	PipelinedRV32I_Tester.PipelinedRISCV32ITest
+[error] (Test / test) sbt.TestsFailedException: Tests unsuccessful
+[error] Total time: 15 s, completed Jan 20, 2026, 7:06:29 PM
