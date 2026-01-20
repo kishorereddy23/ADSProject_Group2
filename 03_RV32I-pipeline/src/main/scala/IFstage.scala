@@ -12,7 +12,7 @@ class IFstage extends Module {
     val outInstr= Output(UInt(32.W))
   })
 
-  // In this simple design, IFstage just forwards PC and instruction
+  // Simple passthrough - actual fetch happens in core
   io.outPC    := io.inPC
   io.outInstr := io.inInstr
 }

@@ -6,7 +6,6 @@ import uopc._
 import Assignment02.ALUOp
 import RV32I._
 
-// Decode Stage
 class IDstage extends Module {
   val io = IO(new Bundle {
     // From IF/IF-barrier
@@ -27,6 +26,7 @@ class IDstage extends Module {
     val outXcptInvalid = Output(Bool())
     val outRS1         = Output(UInt(5.W))
     val outRS2         = Output(UInt(5.W))
+    val outIsRType     = Output(Bool())
 
     // To EX for ALU control
     val outALUOp = Output(ALUOp())
@@ -43,28 +43,28 @@ class IDstage extends Module {
   // I-type immediate (sign-extended)
   val immI = Cat(Fill(20, instr(31)), instr(31, 20))
 
-  // register file read addresses
+  // Register file read addresses
   io.rfReadReq1.addr := rs1
   io.rfReadReq2.addr := rs2
 
   val rs1Data = io.rfReadResp1.data
   val rs2Data = io.rfReadResp2.data
 
-  // default outputs
+  // Default outputs
   io.outUOP         := uopc.NOP
   io.outRD          := 0.U
   io.outOperandA    := 0.U
   io.outOperandB    := 0.U
   io.outXcptInvalid := false.B
   io.outALUOp       := ALUOp.ADD
-
-  io.outRS1 := rs1
-  io.outRS2 := rs2
+  io.outRS1         := rs1
+  io.outRS2         := rs2
+  io.outIsRType     := false.B
 
   val isRType = opcode === OPCODE_OP
   val isIType = opcode === OPCODE_OP_IMM
 
-  // true NOP: ADDI x0,x0,0
+  // True NOP: ADDI x0,x0,0
   val isTrueNOP = instr === "h00000013".U
 
   // ALU instruction decodes
@@ -89,6 +89,7 @@ class IDstage extends Module {
     io.outRD       := rd
     io.outOperandA := rs1Data
     io.outOperandB := Mux(isRType, rs2Data, immI)
+    io.outIsRType  := isRType
 
     when(isADD || isADDI) {
       io.outALUOp := ALUOp.ADD
@@ -118,6 +119,7 @@ class IDstage extends Module {
     io.outOperandB    := 0.U
     io.outXcptInvalid := false.B
     io.outALUOp       := ALUOp.ADD
+    io.outIsRType     := false.B
   }.otherwise {
     io.outXcptInvalid := true.B
   }

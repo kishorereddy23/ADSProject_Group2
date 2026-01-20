@@ -2,6 +2,7 @@ package core_tile
 
 import chisel3._
 import uopc._
+import Assignment02.ALUOp
 
 class IDbarrier extends Module {
   val io = IO(new Bundle {
@@ -12,6 +13,8 @@ class IDbarrier extends Module {
     val inXcptInvalid = Input(Bool())
     val inRS1         = Input(UInt(5.W))
     val inRS2         = Input(UInt(5.W))
+    val inIsRType     = Input(Bool())
+    val inALUOp       = Input(ALUOp())
 
     val outUOP         = Output(uopc())
     val outRD          = Output(UInt(5.W))
@@ -20,6 +23,8 @@ class IDbarrier extends Module {
     val outXcptInvalid = Output(Bool())
     val outRS1         = Output(UInt(5.W))
     val outRS2         = Output(UInt(5.W))
+    val outIsRType     = Output(Bool())
+    val outALUOp       = Output(ALUOp())
   })
 
   val uopReg   = RegInit(uopc.NOP)
@@ -29,14 +34,18 @@ class IDbarrier extends Module {
   val xcptReg  = RegInit(false.B)
   val rs1Reg   = RegInit(0.U(5.W))
   val rs2Reg   = RegInit(0.U(5.W))
+  val rTypeReg = RegInit(false.B)
+  val aluOpReg = RegInit(ALUOp.ADD)
 
-  uopReg  := io.inUOP
-  rdReg   := io.inRD
-  opAReg  := io.inOperandA
-  opBReg  := io.inOperandB
-  xcptReg := io.inXcptInvalid
-  rs1Reg  := io.inRS1
-  rs2Reg  := io.inRS2
+  uopReg   := io.inUOP
+  rdReg    := io.inRD
+  opAReg   := io.inOperandA
+  opBReg   := io.inOperandB
+  xcptReg  := io.inXcptInvalid
+  rs1Reg   := io.inRS1
+  rs2Reg   := io.inRS2
+  rTypeReg := io.inIsRType
+  aluOpReg := io.inALUOp
 
   io.outUOP         := uopReg
   io.outRD          := rdReg
@@ -45,4 +54,6 @@ class IDbarrier extends Module {
   io.outXcptInvalid := xcptReg
   io.outRS1         := rs1Reg
   io.outRS2         := rs2Reg
+  io.outIsRType     := rTypeReg
+  io.outALUOp       := aluOpReg
 }

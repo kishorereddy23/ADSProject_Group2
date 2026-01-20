@@ -30,10 +30,4 @@ class EXbarrier extends Module {
   io.outRD       := rdReg
   io.outAluValue := aluReg
   io.outXcpt     := excReg
-
-  when (true.B) {
-  printf(p"EXB: inVal=0x${Hexadecimal(io.inAluValue)} outVal=0x${Hexadecimal(io.outAluValue)} " +
-         p"inRD=${io.inRD} outRD=${io.outRD}\n")
-}
-
 }

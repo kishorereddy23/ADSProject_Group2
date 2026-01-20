@@ -16,7 +16,7 @@ object ALUOp extends ChiselEnum {
   val SRA  = Value(0x7.U)
   val SLT  = Value(0x8.U)
   val SLTU = Value(0x9.U)
-  val PASSB = Value(0xA.U) // optional, useful for some immediate ops
+  val PASSB = Value(0xA.U)
 }
 
 class ALU extends Module {

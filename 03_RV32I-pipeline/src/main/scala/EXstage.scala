@@ -24,11 +24,4 @@ class EXstage extends Module {
 
   io.outUOP       := io.inUOP
   io.outAluResult := alu.io.aluResult
-
- when (true.B) {
-  printf(p"EX: A=0x${Hexadecimal(io.inOperandA)} B=0x${Hexadecimal(io.inOperandB)}\n")
-}
-
-
-
 }

@@ -24,10 +24,4 @@ class MEMbarrier extends Module {
   io.outAluResult := aluReg
   io.outRD        := rdReg
   io.outException := excReg
-
-  when (true.B) {
-  printf(p"MEMB: inVal=0x${Hexadecimal(io.inAluResult)} outVal=0x${Hexadecimal(io.outAluResult)} " +
-         p"inRD=${io.inRD} outRD=${io.outRD}\n")
-}
-
 }

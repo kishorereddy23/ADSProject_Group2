@@ -1,0 +1,49 @@
+[info] welcome to sbt 1.12.0 (Ubuntu Java 11.0.29)
+[info] loading project definition from /home/kreddy/ADSProject_Group2/03_RV32I-pipeline/project
+[info] loading settings for project root-03_rv32i-pipeline from build.sbt...
+[info] set current project to root-03_rv32i-pipeline (in build file:/home/kreddy/ADSProject_Group2/03_RV32I-pipeline/)
+[info] compiling 1 Scala source to /home/kreddy/ADSProject_Group2/03_RV32I-pipeline/target/scala-2.12/classes ...
+[info] done compiling
+[EX] RS1=  0 RS2=  4 isRType= 0
+[EX] OpA_orig=0x00000000 OpB_orig=0x00000004
+[EX] OpA_fwd=0x00000000 OpB_fwd=0x00000004
+[FWD] memValid= 0 exMem_rd=  0 exMem_val=0x00000000
+[FWD] memWbValid= 0 memWb_rd=  0 memWb_val=0x00000000
+[FWD] wbValid= 0 wb_rd=  0 wb_val=0x00000000
+[EX] RS1=  0 RS2=  5 isRType= 0
+[EX] OpA_orig=0x00000000 OpB_orig=0x00000005
+[EX] OpA_fwd=0x00000000 OpB_fwd=0x00000005
+[FWD] memValid= 1 exMem_rd=  1 exMem_val=0x00000004
+[FWD] memWbValid= 0 memWb_rd=  0 memWb_val=0x00000000
+[FWD] wbValid= 0 wb_rd=  0 wb_val=0x00000000
+[EX] RS1=  1 RS2=  2 isRType= 1
+[EX] OpA_orig=0x00000004 OpB_orig=0x00000000
+[EX] OpA_fwd=0x00000004 OpB_fwd=0x00000000
+[FWD] memValid= 0 exMem_rd=  0 exMem_val=0x00000000
+[FWD] memWbValid= 0 memWb_rd=  0 memWb_val=0x00000000
+[FWD] wbValid= 0 wb_rd=  0 wb_val=0x00000000
+[EX] RS1=  0 RS2= 31 isRType= 0
+[EX] OpA_orig=0x00000000 OpB_orig=0x000007ff
+[EX] OpA_fwd=0x00000000 OpB_fwd=0x000007ff
+[FWD] memValid= 1 exMem_rd=  3 exMem_val=0x00000004
+[FWD] memWbValid= 0 memWb_rd=  0 memWb_val=0x00000000
+[FWD] wbValid= 0 wb_rd=  0 wb_val=0x00000000
+[EX] RS1=  0 RS2= 16 isRType= 0
+[EX] OpA_orig=0x00000000 OpB_orig=0x00000010
+[EX] OpA_fwd=0x00000000 OpB_fwd=0x00000010
+[FWD] memValid= 1 exMem_rd=  4 exMem_val=0x000007ff
+[FWD] memWbValid= 1 memWb_rd=  3 memWb_val=0x00000004
+[FWD] wbValid= 0 wb_rd=  0 wb_val=0x00000000
+[info] PipelinedRISCV32ITest:
+[info] RV32I_BasicTester
+[info] - should work *** FAILED ***
+[info]   io_result=4 (0x4) did not equal expected=9 (0x9) (lines in PipelinedRISCV32I_tb.scala: 17) (PipelinedRISCV32I_tb.scala:39)
+[info] Run completed in 5 seconds, 985 milliseconds.
+[info] Total number of tests run: 1
+[info] Suites: completed 1, aborted 0
+[info] Tests: succeeded 0, failed 1, canceled 0, ignored 0, pending 0
+[info] *** 1 TEST FAILED ***
+[error] Failed tests:
+[error] 	PipelinedRV32I_Tester.PipelinedRISCV32ITest
+[error] (Test / test) sbt.TestsFailedException: Tests unsuccessful
+[error] Total time: 17 s, completed Jan 20, 2026, 8:55:46 PM

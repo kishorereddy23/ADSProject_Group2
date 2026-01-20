@@ -30,9 +30,12 @@ class PipelinedRV32Icore(BinaryFile: String) extends Module {
   val exBarrier  = Module(new EXbarrier())
   val memStage   = Module(new MEM())
   val memBarrier = Module(new MEMbarrier())
+  val wbStage    = Module(new WBstage())  // ADD THIS!
   val wbBarrier  = Module(new WBbarrier())
 
-  // IF stage
+  // ============================================
+  // IF STAGE
+  // ============================================
   ifStage.io.inPC    := pc
   ifStage.io.inInstr := imem(pc(13, 2))
   pc := pc + 4.U
@@ -40,11 +43,13 @@ class PipelinedRV32Icore(BinaryFile: String) extends Module {
   ifBarrier.io.inInstr := ifStage.io.outInstr
   ifBarrier.io.inPC    := ifStage.io.outPC
 
-  // ID stage
+  // ============================================
+  // ID STAGE
+  // ============================================
   idStage.io.inInstr := ifBarrier.io.outInstr
   idStage.io.inPC    := ifBarrier.io.outPC
 
-  // regfile read
+  // Register file read
   rf.io.req_1.addr := idStage.io.rfReadReq1.addr
   rf.io.req_2.addr := idStage.io.rfReadReq2.addr
   idStage.io.rfReadResp1.data := rf.io.resp_1.data
@@ -58,30 +63,47 @@ class PipelinedRV32Icore(BinaryFile: String) extends Module {
   idBarrier.io.inXcptInvalid := idStage.io.outXcptInvalid
   idBarrier.io.inRS1         := idStage.io.outRS1
   idBarrier.io.inRS2         := idStage.io.outRS2
+  idBarrier.io.inIsRType     := idStage.io.outIsRType
+  idBarrier.io.inALUOp       := idStage.io.outALUOp
 
-  // -----------------------------
-  // EX stage + simple WB forwarding
-  // -----------------------------
+  // ============================================
+  // EX STAGE WITH FORWARDING
+  // ============================================
   val exRS1 = idBarrier.io.outRS1
   val exRS2 = idBarrier.io.outRS2
 
+  // Forwarding from EX/MEM (1 cycle ago)
+  val exMemValid = (exBarrier.io.outRD =/= 0.U) && !exBarrier.io.outXcpt
+  
+  // Forwarding from MEM/WB (2 cycles ago)
+  val memWbValid = (memBarrier.io.outRD =/= 0.U) && !memBarrier.io.outException
+  
+  // Forwarding from WB/Out (3 cycles ago)  
   val wbValid = (wbBarrier.io.outRD =/= 0.U) && !wbBarrier.io.outException
 
-  def fwdWB(src: UInt, orig: UInt): UInt = {
-    Mux(wbValid && (wbBarrier.io.outRD === src), wbBarrier.io.outAluResult, orig)
+  // Forwarding function with priority: EX/MEM > MEM/WB > WB > original
+  def forwardOperand(src: UInt, orig: UInt): UInt = {
+    val fromExMem = exMemValid && (exBarrier.io.outRD === src)
+    val fromMemWb = memWbValid && (memBarrier.io.outRD === src)
+    val fromWb = wbValid && (wbBarrier.io.outRD === src)
+    
+    Mux(fromExMem, exBarrier.io.outAluValue,
+      Mux(fromMemWb, memBarrier.io.outAluResult,
+        Mux(fromWb, wbBarrier.io.outAluResult, orig)))
   }
 
-  val exOpA = fwdWB(exRS1, idBarrier.io.outOperandA)
+  // Apply forwarding to operands
+  val exOpA = forwardOperand(exRS1, idBarrier.io.outOperandA)
   val exOpB = Mux(
-    idStage.io.inInstr(6, 0) === OPCODE_OP,      // R-type: rs2
-    fwdWB(exRS2, idBarrier.io.outOperandB),
-    idBarrier.io.outOperandB                    // I-type: immediate
+    idBarrier.io.outIsRType,
+    forwardOperand(exRS2, idBarrier.io.outOperandB),
+    idBarrier.io.outOperandB
   )
 
   exStage.io.inUOP      := idBarrier.io.outUOP
   exStage.io.inOperandA := exOpA
   exStage.io.inOperandB := exOpB
-  exStage.io.inALUOp    := idStage.io.outALUOp
+  exStage.io.inALUOp    := idBarrier.io.outALUOp
 
   // EX → EXbarrier
   exBarrier.io.inUOP      := exStage.io.outUOP
@@ -89,26 +111,30 @@ class PipelinedRV32Icore(BinaryFile: String) extends Module {
   exBarrier.io.inAluValue := exStage.io.outAluResult
   exBarrier.io.inXcpt     := idBarrier.io.outXcptInvalid
 
-  // MEM stage + barrier (no real MEM yet)
+  // ============================================
+  // MEM STAGE
+  // ============================================
   memStage.io := DontCare
 
   memBarrier.io.inAluResult := exBarrier.io.outAluValue
   memBarrier.io.inRD        := exBarrier.io.outRD
   memBarrier.io.inException := exBarrier.io.outXcpt
 
-  // WB barrier + writeback
-  wbBarrier.io.inAluResult := memBarrier.io.outAluResult
+  // ============================================
+  // WB STAGE - WRITE TO REGISTER FILE HERE!
+  // ============================================
+  wbStage.io.inAluResult := memBarrier.io.outAluResult
+  wbStage.io.inRD        := memBarrier.io.outRD
+  
+  // Connect WB stage to register file
+  rf.io.req_3 <> wbStage.io.regFileReq
+
+  // WB → WBbarrier (for output)
+  wbBarrier.io.inAluResult := wbStage.io.check_res
   wbBarrier.io.inRD        := memBarrier.io.outRD
   wbBarrier.io.inException := memBarrier.io.outException
 
-  val wbData = wbBarrier.io.outAluResult
-  val wbRD   = wbBarrier.io.outRD
-  val wbExc  = wbBarrier.io.outException
-
-  rf.io.req_3.addr  := wbRD
-  rf.io.req_3.data  := wbData
-  rf.io.req_3.wr_en := (wbRD =/= 0.U) && !wbExc
-
-  io.result    := wbData
-  io.exception := wbExc
+  // Output from final barrier
+  io.result    := wbBarrier.io.outAluResult
+  io.exception := wbBarrier.io.outException
 }

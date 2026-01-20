@@ -24,10 +24,4 @@ class WBbarrier extends Module {
   io.outAluResult := aluReg
   io.outRD        := rdReg
   io.outException := excReg
-
-  when (true.B) {
-  printf(p"WB: inRes=0x${Hexadecimal(io.inAluResult)} outRes=0x${Hexadecimal(io.outAluResult)} " +
-         p"inRD=${io.inRD} outRD=${io.outRD}\n")
-}
-
 }
