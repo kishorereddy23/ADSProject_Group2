@@ -12,37 +12,38 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-22.04
-    timeout-minutes: 30  # Add timeout to prevent hanging
+    timeout-minutes: 30
 
     defaults:
       run:
         working-directory: 03_RV32I-pipeline
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      
-    - name: Set up JDK 11
-      uses: actions/setup-java@v4
-      with:
-        java-version: '11'
-        distribution: 'temurin'
-        cache: 'sbt'
-    
-    - name: Verify files exist
-      run: |
-        echo "Checking if test files exist..."
-        ls -la src/test/programs/
-        
-    - name: Compile project
-      run: sbt compile
-      
-    - name: Run tests
-      run: sbt test
-      
-    - name: Upload test results
-      if: failure()
-      uses: actions/upload-artifact@v3
-      with:
-        name: test-results
-        path: 03_RV32I-pipeline/target/test-reports/
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v4
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+          cache: 'sbt'
+
+      - name: Verify test program exists
+        run: |
+          echo "Checking if test files exist..."
+          ls -la src/test/programs/
+          test -f src/test/programs/BinaryFile_pipelined
+
+      - name: Compile project
+        run: sbt compile
+
+      - name: Run tests
+        run: sbt test
+
+      - name: Upload test results (on failure)
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: target/test-reports/
