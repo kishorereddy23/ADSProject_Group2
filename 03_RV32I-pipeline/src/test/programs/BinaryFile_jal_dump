@@ -1,0 +1,10 @@
+00000013 // [0]  NOP
+00a00093 // [1]  ADDI x1, x0, 10       → x1 = 10
+00c000ef // [2]  JAL x1, 12            → Jump to PC+12, save PC+4 in x1
+00000013 // [3]  NOP (should be flushed)
+01400113 // [4]  ADDI x2, x0, 20       (should NOT execute - flushed)
+00000013 // [5]  NOP (should NOT execute - flushed)
+00000013 // [6]  NOP (should NOT execute - flushed)
+06400193 // [7]  ADDI x3, x0, 100      ← Jump target (PC+12 from inst 2)
+00000013 // [8]  NOP
+00000013 // [9]  NOP

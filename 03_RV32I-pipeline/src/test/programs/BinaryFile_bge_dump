@@ -1,0 +1,12 @@
+00000013  // [0x00] NOP
+00500093  // [0x04] ADDI x1, x0, 5    → x1 = 5
+00300113  // [0x08] ADDI x2, x0, 3    → x2 = 3
+00000013  // [0x0c] NOP
+00000013  // [0x10] NOP
+00508463  // [0x14] BGE x1, x2, +8   → if 5 >= 3: jump to 0x1c
+00000013  // [0x18] NOP               (skipped if branch taken)
+00800213  // [0x1c] ADDI x4, x0, 8   → x4 = 8  ← branch target
+00000013  // [0x20] NOP
+00000013  // [0x24] NOP
+00000013  // [0x28] NOP
+00000013  // [0x2c] NOP

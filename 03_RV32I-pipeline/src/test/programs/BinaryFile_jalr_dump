@@ -1,0 +1,12 @@
+00000013  // [0x00] NOP
+02400093  // [0x04] ADDI x1, x0, 36  → x1 = 36 = 0x24
+00000013  // [0x08] NOP
+00000013  // [0x0c] NOP
+000080e7  // [0x10] JALR x1, x1, 0  → jump to addr in x1 (0x24), save PC+4=0x14 to x1
+00000013  // [0x14] NOP  (flushed)
+00000013  // [0x18] NOP  (flushed)
+00000013  // [0x1c] NOP
+00000013  // [0x20] NOP
+00500213  // [0x24] ADDI x4, x0, 5  → x4 = 5  ← jump target
+00000013  // [0x28] NOP
+00000013  // [0x2c] NOP
